@@ -1,4 +1,5 @@
 <resources>
-    <string name="app_name">as3</string>
+    <string name="app_name">Mine Seeker</string>
+    <string name="main_menu">Main Menu</string>
 
 </resources>
