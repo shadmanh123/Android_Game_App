@@ -2,5 +2,6 @@
     <string name="app_name">Mine Seeker</string>
     <string name="main_menu">Main Menu</string>
     <string name="option">Options</string>
+    <string name="help">Help</string>
 
 </resources>

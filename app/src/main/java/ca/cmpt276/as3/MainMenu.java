@@ -18,10 +18,16 @@ public class MainMenu extends AppCompatActivity {
 
 
     private void setUpOptionsButton(){
-        Button btn = (Button)findViewById(R.id.option_btn);
+        Button optionBtn = (Button)findViewById(R.id.option_btn);
         //btn.setOnClickListener(v -> startActivity(new Intent(MainMenu.this, OptionActivity.class)));
-        btn.setOnClickListener(v -> {
+        optionBtn.setOnClickListener(v -> {
             Intent intent = OptionActivity.makeIntent(MainMenu.this);
+            startActivity(intent);
+        });
+
+        Button helpBtn = (Button)findViewById(R.id.help_btn);
+        helpBtn.setOnClickListener(v -> {
+            Intent intent = HelpActivity.makeIntent(MainMenu.this);
             startActivity(intent);
         });
     }
