@@ -3,5 +3,16 @@
     <string name="main_menu">Main Menu</string>
     <string name="option">Options</string>
     <string name="help">Help</string>
+    <string name="helpMessage">
+        \n
+        6.1 The about-the-author text must include a hyperlink to the CMPT 276 home-page. \n
+        6.2 The game information text must explain some of the basics about the game. You must \n
+        use your own wording, not copying the text from the assignment document. Your text \n
+        should reflect the theme of your game. \n
+        6.3 The Help screen must provide the correct citation for any images, icons, or other \n
+        resources (such as music) used in the game (for copyright purposes). Include a \n
+        hyperlink if applicable. \n
+        6.4 Pressing the Android back button on the Help screen returns to the Main Menu.
+    </string>
 
 </resources>
