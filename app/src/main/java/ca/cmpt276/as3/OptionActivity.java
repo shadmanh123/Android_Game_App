@@ -46,7 +46,7 @@ public class OptionActivity extends AppCompatActivity {
         for (int i = 0; i < numMines.length; i++) {
             int numMine = numMines[i];
             RadioButton button = new RadioButton(this);
-            button.setText(numMine + " Mines");
+            button.setText(numMine + " mines");
 
             // meaningless message
             button.setOnClickListener(new View.OnClickListener() {
