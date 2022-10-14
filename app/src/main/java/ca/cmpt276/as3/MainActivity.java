@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private void setUpSkipButton(){
         Button btn = (Button)findViewById(R.id.skip);
         btn.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, MainMenu.class)));
+
     }
 
 
