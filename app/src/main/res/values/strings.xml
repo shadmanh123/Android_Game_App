@@ -14,5 +14,6 @@
         hyperlink if applicable. \n
         6.4 Pressing the Android back button on the Help screen returns to the Main Menu.
     </string>
-
+    <string name="dynamicBtn">Mine Seeker Game</string>
+    <string name="hello_world">Hello, welcome to mine seekers</string>
 </resources>

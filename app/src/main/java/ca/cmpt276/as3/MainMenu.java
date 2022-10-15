@@ -14,8 +14,9 @@ public class MainMenu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
         setUpOptionsButton();
+        setUpPlayButton();
+        setUpHelpButton();
     }
-
 
     private void setUpOptionsButton(){
         Button optionBtn = (Button)findViewById(R.id.option_btn);
@@ -24,11 +25,23 @@ public class MainMenu extends AppCompatActivity {
             Intent intent = OptionActivity.makeIntent(MainMenu.this);
             startActivity(intent);
         });
+    }
 
+    private void setUpPlayButton() {
+        Button playBtn = (Button)findViewById(R.id.play_btn);
+        playBtn.setOnClickListener(v -> {
+            Intent intent = DynamicButtons.makeIntent(MainMenu.this);
+            startActivity(intent);
+        });
+    }
+
+    private void setUpHelpButton() {
         Button helpBtn = (Button)findViewById(R.id.help_btn);
         helpBtn.setOnClickListener(v -> {
             Intent intent = HelpActivity.makeIntent(MainMenu.this);
             startActivity(intent);
         });
     }
+
+
 }
