@@ -20,6 +20,10 @@ public class DynamicButtons extends AppCompatActivity {
     private static final int NUM_ROWS = 4;
     private static final int NUM_COLS = 6;
 
+    //private final int NUM_ROWS = getIntent().getIntExtra("Saved_Row", 0);
+    //private final int NUM_COLS = getIntent().getIntExtra("Saved_Col", 0);
+
+
     Button[][] buttons = new Button[NUM_ROWS][NUM_COLS];
 
     public static Intent makeIntent(Context context){
@@ -29,6 +33,7 @@ public class DynamicButtons extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide(); // hide the app action bar
         setContentView(R.layout.activity_dynamic_buttons);
 
         populateButtons();
@@ -78,6 +83,12 @@ public class DynamicButtons extends AppCompatActivity {
         // lock button sizes
         lockButtonSizes();
 
+
+
+        // android:scaleType="fitCenter"
+
+
+
         // does not scale image
 //        button.setBackgroundResource(R.drawable.icon_cactus_at);
 
@@ -85,7 +96,9 @@ public class DynamicButtons extends AppCompatActivity {
         // only works in jellybean
         int newWidth = button.getWidth();
         int newHeight = button.getHeight();
-        Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.icon_cactus_at);
+        // Image from Crystal Clear icon set, under LGPL
+        // http://commons.wikimedia.org/wiki/Crystal_Clear
+        Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.icon_mines);
         Bitmap scaledBitmap = Bitmap.createScaledBitmap(originalBitmap, newWidth, newHeight, true);
         Resources resource = getResources();
         button.setBackground(new BitmapDrawable(resource, scaledBitmap));

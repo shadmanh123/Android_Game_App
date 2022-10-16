@@ -13,6 +13,10 @@ import android.widget.Toast;
 
 public class OptionActivity extends AppCompatActivity {
 
+    int savedMinesValue;
+    int savedBoardRow;
+    int savedBoardColumn;
+
     public static Intent makeIntent(Context context){
         return new Intent(context, OptionActivity.class);
     }
@@ -24,11 +28,14 @@ public class OptionActivity extends AppCompatActivity {
         createRadioBoardButtons();
         createRadioMinesButtons();
 
-        int savedMinesValue = getNumMines(this); // selected num mines
-        int savedBoardRow = getBoardRow(this); // selected board size row
-        int savedBoardColumn = getBoardColumn(this); // selected board size column
+        savedMinesValue = getNumMines(this); // selected num mines
+        savedBoardRow = getBoardRow(this); // selected board size row
+        savedBoardColumn = getBoardColumn(this); // selected board size column
         Toast.makeText(this, "Saved choice: " + savedBoardRow + " x " + savedBoardColumn + " board size, "
                 + savedMinesValue + " mines", Toast.LENGTH_SHORT).show();
+
+        //onBackPressed();
+
     }
 
     private void createRadioBoardButtons() {
@@ -126,8 +133,14 @@ public class OptionActivity extends AppCompatActivity {
     }
 
 
+
 //    @Override
 //    public void onBackPressed() {
-//
+//        Bundle bundle = new Bundle();
+//        bundle.putInt("Saved_Row", savedBoardRow);
+//        bundle.putInt("Saved_Col", savedBoardColumn);
+//        Intent intent = new Intent(OptionActivity.this, DynamicButtons.class);
+//        intent.putExtras(bundle);
+//        startActivity(intent);
 //    }
 }
