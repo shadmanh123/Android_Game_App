@@ -143,19 +143,6 @@ public class OptionActivity extends AppCompatActivity {
     }
 
 
-
-//    @Override
-//    public void onBackPressed() {
-//    useless method, will delete before submission
-//        Bundle bundle = new Bundle();
-//        bundle.putInt("Saved_Row", savedBoardRow);
-//        bundle.putInt("Saved_Col", savedBoardColumn);
-//        Intent intent = new Intent(OptionActivity.this, DynamicButtons.class);
-//        intent.putExtras(bundle);
-//        startActivity(intent);
-//    }
-
-
 //    public void onBackPressed(){
 //        startActivity(new Intent(OptionActivity.this, MainMenu.class));
 //        finish();
