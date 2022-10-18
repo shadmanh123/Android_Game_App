@@ -15,7 +15,10 @@
         <activity
             android:name=".DynamicButtons"
             android:exported="false"
-            android:label="@string/dynamicBtn">
+            android:label="@string/dynamicBtn"
+            android:screenOrientation="landscape"
+            android:configChanges="keyboard|orientation|screenSize|keyboardHidden"
+            >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -23,7 +26,10 @@
         <activity
             android:name=".HelpActivity"
             android:exported="false"
-            android:label="@string/help">
+            android:label="@string/help"
+            android:screenOrientation="landscape"
+            android:configChanges="keyboard|orientation|screenSize|keyboardHidden"
+            >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -31,7 +37,10 @@
         <activity
             android:name=".OptionActivity"
             android:exported="false"
-            android:label="@string/option">
+            android:label="@string/option"
+            android:screenOrientation="landscape"
+            android:configChanges="keyboard|orientation|screenSize|keyboardHidden"
+            >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -39,14 +48,20 @@
         <activity
             android:name=".MainMenu"
             android:exported="false"
-            android:label="@string/main_menu">
+            android:label="@string/main_menu"
+            android:screenOrientation="landscape"
+            android:configChanges="keyboard|orientation|screenSize|keyboardHidden"
+            >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="landscape"
+            android:configChanges="keyboard|orientation|screenSize|keyboardHidden"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
