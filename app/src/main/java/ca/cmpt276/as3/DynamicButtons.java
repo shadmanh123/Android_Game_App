@@ -24,9 +24,6 @@ public class DynamicButtons extends AppCompatActivity {
     //private static final int NUM_ROWS = 4;
     //private static final int NUM_COLS = 6;
 
-    //private final int NUM_ROWS = getIntent().getIntExtra("Saved_Row", 0);
-    //private final int NUM_COLS = getIntent().getIntExtra("Saved_Col", 0);
-
     private int NUM_ROWS = 10;  // add values >= options values to fix java.lang.ArrayIndexOutOfBoundsException
     private int NUM_COLS = 15;  // fix java.lang.ArrayIndexOutOfBoundsException
 
@@ -60,12 +57,12 @@ public class DynamicButtons extends AppCompatActivity {
 
     }
 
-    // set default image, and then set mines image to override it
-    // used for fixing the button sizes changes
-    private void setBtnBackground(int row, int col){
-        Button button = buttons[row][col];
-        button.setBackgroundResource(R.drawable.icon_mines);
-    }
+//    // set default image, and then set mines image to override it
+//    // used for fixing the button sizes changes
+//    private void setBtnBackground(int row, int col){
+//        Button button = buttons[row][col];
+//        button.setBackgroundResource(R.drawable.icon_mines);
+//    }
 
     private void populateButtons() {
         // use singleton to get the values stored in the singleton
@@ -117,14 +114,9 @@ public class DynamicButtons extends AppCompatActivity {
         // lock button sizes
         lockButtonSizes();
 
-
-
-        // does not scale image
-//        button.setBackgroundResource(R.drawable.icon_cactus_at);
-
         // scale image to button:
-        int newWidth = button.getWidth();
-        int newHeight = button.getHeight();
+        int newWidth = button.getWidth() - 100;
+        int newHeight = button.getHeight() - 100;
         // Image from Crystal Clear icon set, under LGPL
         // http://commons.wikimedia.org/wiki/Crystal_Clear
         Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.icon_mines);
