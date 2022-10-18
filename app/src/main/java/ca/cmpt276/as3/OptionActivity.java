@@ -143,8 +143,6 @@ public class OptionActivity extends AppCompatActivity {
     }
 
 
-
-
 //    public void onBackPressed(){
 //        startActivity(new Intent(OptionActivity.this, MainMenu.class));
 //        finish();
