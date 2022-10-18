@@ -123,8 +123,8 @@ public class DynamicButtons extends AppCompatActivity {
 //        button.setBackgroundResource(R.drawable.icon_cactus_at);
 
         // scale image to button:
-        int newWidth = button.getWidth();
-        int newHeight = button.getHeight();
+        int newWidth = button.getWidth() - 100;
+        int newHeight = button.getHeight() - 100;
         // Image from Crystal Clear icon set, under LGPL
         // http://commons.wikimedia.org/wiki/Crystal_Clear
         Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.icon_mines);
