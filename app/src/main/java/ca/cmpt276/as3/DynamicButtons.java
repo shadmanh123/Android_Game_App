@@ -40,8 +40,6 @@ public class DynamicButtons extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide(); // hide the app action bar
         setContentView(R.layout.activity_dynamic_buttons);
-
-//        populateButtons();
     }
 
 //    @Override
@@ -53,16 +51,8 @@ public class DynamicButtons extends AppCompatActivity {
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
         populateButtons();
-
-
     }
 
-//    // set default image, and then set mines image to override it
-//    // used for fixing the button sizes changes
-//    private void setBtnBackground(int row, int col){
-//        Button button = buttons[row][col];
-//        button.setBackgroundResource(R.drawable.icon_mines);
-//    }
 
     private void populateButtons() {
         // use singleton to get the values stored in the singleton
@@ -71,7 +61,6 @@ public class DynamicButtons extends AppCompatActivity {
         NUM_COLS = singleton.getSavedBoardColumn();
 
         TableLayout table = (TableLayout) findViewById(R.id.tableForButtons);
-        //table.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.MATCH_PARENT));
         for (int row = 0; row < NUM_ROWS; row++) {
             TableRow tableRow = new TableRow(this);
             tableRow.setLayoutParams(new TableLayout.LayoutParams(
