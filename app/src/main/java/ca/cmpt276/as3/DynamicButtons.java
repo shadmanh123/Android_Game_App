@@ -9,22 +9,30 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.Toast;
 
+
+import ca.cmpt276.as3.model.Singleton;
+
 public class DynamicButtons extends AppCompatActivity {
 
-    private static final int NUM_ROWS = 4;
-    private static final int NUM_COLS = 6;
+    //private static final int NUM_ROWS = 4;
+    //private static final int NUM_COLS = 6;
 
     //private final int NUM_ROWS = getIntent().getIntExtra("Saved_Row", 0);
     //private final int NUM_COLS = getIntent().getIntExtra("Saved_Col", 0);
 
+    private int NUM_ROWS = 10;  // add values >= options values to fix java.lang.ArrayIndexOutOfBoundsException
+    private int NUM_COLS = 15;  // fix java.lang.ArrayIndexOutOfBoundsException
 
     Button[][] buttons = new Button[NUM_ROWS][NUM_COLS];
+
+    private Singleton singleton;
 
     public static Intent makeIntent(Context context){
         return new Intent(context, DynamicButtons.class);
@@ -36,11 +44,37 @@ public class DynamicButtons extends AppCompatActivity {
         getSupportActionBar().hide(); // hide the app action bar
         setContentView(R.layout.activity_dynamic_buttons);
 
+//        populateButtons();
+    }
+
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        lockButtonSizes();
+//    }
+
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
         populateButtons();
+
+
+    }
+
+    // set default image, and then set mines image to override it
+    // used for fixing the button sizes changes
+    private void setBtnBackground(int row, int col){
+        Button button = buttons[row][col];
+        button.setBackgroundResource(R.drawable.icon_mines);
     }
 
     private void populateButtons() {
+        // use singleton to get the values stored in the singleton
+        singleton = Singleton.getInstance();
+        NUM_ROWS = singleton.getSavedBoardRow();
+        NUM_COLS = singleton.getSavedBoardColumn();
+
         TableLayout table = (TableLayout) findViewById(R.id.tableForButtons);
+        //table.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.MATCH_PARENT));
         for (int row = 0; row < NUM_ROWS; row++) {
             TableRow tableRow = new TableRow(this);
             tableRow.setLayoutParams(new TableLayout.LayoutParams(
@@ -59,33 +93,29 @@ public class DynamicButtons extends AppCompatActivity {
                         1.0f));
                 button.setText("" + col + "," + row);
                 button.setPadding(0,0,0,0);
-
                 // make text not clip on small buttons
                 button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        gridButtonClicked(FINAL_COL, FINAL_ROW);
+                        gridButtonClicked(FINAL_ROW, FINAL_COL);
                     }
 
                 });
-                        
+
                 tableRow.addView(button);
                 buttons[row][col] = button;
             }
         }
     }
 
-    private void gridButtonClicked(int col, int row) {
-        Toast.makeText(this, "Button clicked: " + col + "," + row,
-                Toast.LENGTH_SHORT).show();
+    private void gridButtonClicked(int row, int col) {
+        //Toast.makeText(this, "Button clicked: " + col + "," + row, Toast.LENGTH_SHORT).show();
         Button button = buttons[row][col];
+        // set button color
+        button.setTextColor(getResources().getColor(R.color.white));
 
         // lock button sizes
         lockButtonSizes();
-
-
-
-        // android:scaleType="fitCenter"
 
 
 
@@ -93,7 +123,6 @@ public class DynamicButtons extends AppCompatActivity {
 //        button.setBackgroundResource(R.drawable.icon_cactus_at);
 
         // scale image to button:
-        // only works in jellybean
         int newWidth = button.getWidth();
         int newHeight = button.getHeight();
         // Image from Crystal Clear icon set, under LGPL
@@ -103,8 +132,9 @@ public class DynamicButtons extends AppCompatActivity {
         Resources resource = getResources();
         button.setBackground(new BitmapDrawable(resource, scaledBitmap));
 
+
         // change text on buttons
-        button.setText("" + col);
+         button.setText("" + col);
     }
 
     private void lockButtonSizes() {
@@ -123,6 +153,9 @@ public class DynamicButtons extends AppCompatActivity {
             }
         }
     }
+
+
+
 
 
 }

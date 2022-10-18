@@ -11,11 +11,11 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import ca.cmpt276.as3.model.Singleton;
+
 public class OptionActivity extends AppCompatActivity {
 
-    int savedMinesValue;
-    int savedBoardRow;
-    int savedBoardColumn;
+    private Singleton singleton;
 
     public static Intent makeIntent(Context context){
         return new Intent(context, OptionActivity.class);
@@ -28,14 +28,19 @@ public class OptionActivity extends AppCompatActivity {
         createRadioBoardButtons();
         createRadioMinesButtons();
 
-        savedMinesValue = getNumMines(this); // selected num mines
-        savedBoardRow = getBoardRow(this); // selected board size row
-        savedBoardColumn = getBoardColumn(this); // selected board size column
+        int savedMinesValue = getNumMines(this); // selected num mines
+        int savedBoardRow = getBoardRow(this); // selected board size row
+        int savedBoardColumn = getBoardColumn(this); // selected board size column
         Toast.makeText(this, "Saved choice: " + savedBoardRow + " x " + savedBoardColumn + " board size, "
                 + savedMinesValue + " mines", Toast.LENGTH_SHORT).show();
 
-        //onBackPressed();
 
+        // use singleton to set the values stored in the singleton
+        singleton = Singleton.getInstance();
+
+
+
+        //onBackPressed();
     }
 
     private void createRadioBoardButtons() {
@@ -45,8 +50,8 @@ public class OptionActivity extends AppCompatActivity {
 
         // create the buttons
         for (int i = 0; i < boardSizes.length; i++) {
-            int boardSize= boardSizes[i];
-            int numMine = numMines[i];
+            int boardSize= boardSizes[i]; // row
+            int numMine = numMines[i];    // column
             String btnText = boardSize + " rows x " + numMine + " columns";
             RadioButton button = new RadioButton(this);
             button.setText(btnText);
@@ -78,7 +83,6 @@ public class OptionActivity extends AppCompatActivity {
             RadioButton button = new RadioButton(this);
             button.setText(numMine + " mines");
 
-
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -94,10 +98,12 @@ public class OptionActivity extends AppCompatActivity {
 
 
     // save user choice of num mines
-    private void saveNumMine(int numMine1){
+    private void saveNumMine(int numMines){
         SharedPreferences prefs = this.getSharedPreferences("AppPrefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
-        editor.putInt("Num mines", numMine1);
+        editor.putInt("Num mines", numMines);
+        // set the mines stored in the singleton
+        singleton.setSavedMinesValue(numMines);
         editor.apply();
     }
 
@@ -111,6 +117,8 @@ public class OptionActivity extends AppCompatActivity {
         SharedPreferences prefs = this.getSharedPreferences("AppPrefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putInt("Board size row", row);
+        // set row stored in the singleton
+        singleton.setSavedBoardRow(row);
         editor.apply();
     }
 
@@ -124,6 +132,8 @@ public class OptionActivity extends AppCompatActivity {
         SharedPreferences prefs = this.getSharedPreferences("AppPrefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putInt("Board size column", column);
+        // set column stored in the singleton
+        singleton.setSavedBoardColumn(column);
         editor.apply();
     }
 
@@ -136,6 +146,7 @@ public class OptionActivity extends AppCompatActivity {
 
 //    @Override
 //    public void onBackPressed() {
+//    useless method, will delete before submission
 //        Bundle bundle = new Bundle();
 //        bundle.putInt("Saved_Row", savedBoardRow);
 //        bundle.putInt("Saved_Col", savedBoardColumn);
@@ -143,4 +154,11 @@ public class OptionActivity extends AppCompatActivity {
 //        intent.putExtras(bundle);
 //        startActivity(intent);
 //    }
+
+
+//    public void onBackPressed(){
+//        startActivity(new Intent(OptionActivity.this, MainMenu.class));
+//        finish();
+//    }
+
 }
