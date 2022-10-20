@@ -31,13 +31,15 @@
 
     <TextView
         android:id="@+id/tvWelcomeMessage"
-        android:layout_width="193dp"
+        android:layout_width="205dp"
         android:layout_height="101dp"
         android:background="#FFFFFF"
-        android:text="Welcome to Bomb Searcher! This game is created by Jenna and Shadman. We hope you enjoy!"
+        android:text="@string/Welcome_Message"
+        android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/looney_tunes"
     tools:context=".DynamicButtons">
 
     <TextView
@@ -17,29 +18,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-<!--    <TableLayout-->
-<!--        android:layout_width="729dp"-->
-<!--        android:layout_height="409dp"-->
-<!--        android:layout_marginTop="0dp"-->
-<!--        android:stretchColumns="*"-->
-<!--        tools:layout_editor_absoluteX="1dp"-->
-<!--        tools:layout_editor_absoluteY="1dp">-->
+    <!--    <TableLayout-->
+    <!--        android:layout_width="729dp"-->
+    <!--        android:layout_height="409dp"-->
+    <!--        android:layout_marginTop="0dp"-->
+    <!--        android:stretchColumns="*"-->
+    <!--        tools:layout_editor_absoluteX="1dp"-->
+    <!--        tools:layout_editor_absoluteY="1dp">-->
 
-<!--    <TextView-->
-<!--        android:id="@+id/textView1"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="@string/hello_world"/>-->
+    <!--    <TextView-->
+    <!--        android:id="@+id/textView1"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:text="@string/hello_world"/>-->
 
-<!--    <TableLayout-->
-<!--        android:id="@+id/tableForButtons"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:layout_alignLeft="@+id/textView1"-->
-<!--        android:layout_below="@+id/textView1"-->
-<!--        android:layout_marginTop="0dp"-->
-<!--        android:stretchColumns="*">-->
-<!--    </TableLayout>-->
+    <!--    <TableLayout-->
+    <!--        android:id="@+id/tableForButtons"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:layout_alignLeft="@+id/textView1"-->
+    <!--        android:layout_below="@+id/textView1"-->
+    <!--        android:layout_marginTop="0dp"-->
+    <!--        android:stretchColumns="*">-->
+    <!--    </TableLayout>-->
 
     <TableLayout
         android:id="@+id/tableForButtons"
