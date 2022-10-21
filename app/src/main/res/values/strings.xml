@@ -21,7 +21,9 @@
         \n
         We have used resources from the following sources to make this game: \n
         https://www.fatherly.com/play/how-stream-classic-looney-tunes-online-right-now\n
-        https://www.youtube.com/watch?v=XwWZlDKXACs
+        https://www.youtube.com/watch?v=XwWZlDKXACs\n
+        https://stackoverflow.com/questions/7965494/how-to-put-some-delay-in-calling-an-activity
+        -from-another-activity
     </string>
     <string name="dynamicBtn">Mine Seeker Game</string>
     <string name="hello_world">Hello, welcome to mine seekers</string>
