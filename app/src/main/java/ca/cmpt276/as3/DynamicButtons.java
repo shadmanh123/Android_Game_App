@@ -25,7 +25,6 @@ import ca.cmpt276.as3.model.Singleton;
 
 public class DynamicButtons extends AppCompatActivity {
 
-
     private Singleton singleton = Singleton.getInstance();
     private int NUM_ROWS = 10;  // add values >= options values to fix java.lang.ArrayIndexOutOfBoundsException
     private int NUM_COLS = 15;  // fix java.lang.ArrayIndexOutOfBoundsException
@@ -106,10 +105,13 @@ public class DynamicButtons extends AppCompatActivity {
                                 if(!isRevealed(FINAL_ROW, FINAL_COL)){
                                 gridButtonClicked(FINAL_ROW, FINAL_COL);
                                 FOUND_MINES++;
-                                cellAt(FINAL_ROW, FINAL_COL).setRevealed(true);
-                            }else
                                 button.setText(" " + count);
-                                SCANS_USED++;
+                                cellAt(FINAL_ROW, FINAL_COL).setRevealed(true);
+                            }else if(isRevealed(FINAL_ROW, FINAL_COL) && !isScanned(FINAL_ROW, FINAL_COL)) {
+                                    button.setText(" " + count);
+                                    SCANS_USED++;
+                                    cellAt(FINAL_ROW, FINAL_COL).setScanned(true);
+                                }
                                 break;
 
                             case Cell.BLANK:
@@ -117,6 +119,8 @@ public class DynamicButtons extends AppCompatActivity {
                                     SCANS_USED++;
                                     button.setText(" " + count);
                                     cellAt(FINAL_ROW, FINAL_COL).setScanned(true);
+                                }else {
+                                    button.setText(" " + count);
                                 }
                                 break;
 
