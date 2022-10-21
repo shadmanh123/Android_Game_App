@@ -136,8 +136,8 @@ public class DynamicButtons extends AppCompatActivity {
                 button.setMaxWidth(width);
 
                 int height = button.getHeight();
-                button.setMinWidth(height);
-                button.setMaxWidth(height);
+                button.setMinHeight(height);
+                button.setMaxHeight(height);
 
             }
         }
