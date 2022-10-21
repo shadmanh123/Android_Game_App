@@ -9,12 +9,14 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
 public class MainActivity extends AppCompatActivity {
     Dialog dialog;
-    boolean buttonPressed = false;
+    Runnable runnable;
+    private Handler handler;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,22 +30,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void switchToMainMenu() {
-        //TODO: Make activity change 4 seconds after animation is over
-        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+        handler = new Handler();
+        runnable = new Runnable() {
             @Override
             public void run() {
-                buttonPressed = true;
+                startActivity(new Intent(MainActivity.this, MainMenu.class));
             }
-        }, 4000);
-        if(buttonPressed == true) {
-            startActivity(new Intent(MainActivity.this, MainMenu.class));
-        }
+        };
+        handler.postDelayed(runnable, 4000);
     }
-
 
     private void setUpSkipButton(){
         Button btn = (Button)findViewById(R.id.skip);
-        btn.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, MainMenu.class)));
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                handler.removeCallbacks(runnable);
+                startActivity(new Intent(MainActivity.this, MainMenu.class));
+            }
+        });
 
     }
 
