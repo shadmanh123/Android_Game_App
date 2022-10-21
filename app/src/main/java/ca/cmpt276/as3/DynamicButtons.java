@@ -36,6 +36,8 @@ public class DynamicButtons extends AppCompatActivity {
     private int NUM_MINES;
     private int FOUND_MINES = 0;
     private int SCANS_USED = 0;
+    private int countMine = 0;
+//    private int[][] countMines = new int[NUM_ROWS][NUM_COLS];
     //private List<Cell> cell = new ArrayList<>();
     Button[][] buttons = new Button[NUM_ROWS][NUM_COLS];
 
@@ -105,12 +107,23 @@ public class DynamicButtons extends AppCompatActivity {
                         found.setText("Found " + FOUND_MINES + " of " + NUM_MINES + " mines.");
                         scanned.setText("# Scans used: " + SCANS_USED);
 
-                        //found.addTextChangedListener(textWatcher);
+//                        TextWatcher watcher = new TextWatcher() {
+//                            @Override
+//                            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+//                            @Override
+//                            public void afterTextChanged(Editable s) {}
+//                            @Override
+//                            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//
+//                            }
+//                        };
+//
+//                        found.addTextChangedListener(watcher);
+//                        scanned.addTextChangedListener(watcher);
 
-                        int count = mineSeeker.countForAll(FINAL_ROW, FINAL_COL);
+                        //countMine = mineSeeker.countForAll(FINAL_ROW, FINAL_COL);
 
                         switch (mineSeeker.cellAt(FINAL_ROW, FINAL_COL).getValue()){
-
                             case Cell.BOMB:
                                 if(!mineSeeker.cellAt(FINAL_ROW, FINAL_COL).isRevealed()){
                                 gridButtonClicked(FINAL_ROW, FINAL_COL); // set bomb image
@@ -118,27 +131,34 @@ public class DynamicButtons extends AppCompatActivity {
                                 //button.setText(" " + count);
                                 mineSeeker.cellAt(FINAL_ROW, FINAL_COL).setRevealed(true);
                                 }else if(mineSeeker.cellAt(FINAL_ROW, FINAL_COL).isRevealed() && !mineSeeker.cellAt(FINAL_ROW, FINAL_COL).isScanned()) {
-                                    button.setText(" " + count);
+                                    //button.setText(" " + countMine);
                                     SCANS_USED++;
                                     mineSeeker.cellAt(FINAL_ROW, FINAL_COL).setScanned(true);
-                                }button.setText(" " + count);
+                                }
+                                //button.setText(" " + countMine);
                                 break;
 
                             case Cell.BLANK:
                                 if(!mineSeeker.cellAt(FINAL_ROW, FINAL_COL).isScanned()){
-                                    button.setText(" " + count);
+                                    //button.setText(" " + countMine);
                                     SCANS_USED++;
                                     mineSeeker.cellAt(FINAL_ROW, FINAL_COL).setScanned(true);
                                 }else {
-                                    button.setText(" " + count);
+                                    //button.setText(" " + countMine);
                                 }
                                 break;
 
+
+                        }
+
+                        if(FOUND_MINES >= 0){
+                            updateCount(FINAL_ROW, FINAL_COL);
                         }
 
                     }
 
                 });
+
 
                 tableRow.addView(button);
                 buttons[row][col] = button;
@@ -188,24 +208,31 @@ public class DynamicButtons extends AppCompatActivity {
     }
 
 
-    private TextWatcher textWatcher = new TextWatcher() {
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+    private void updateCount(int row, int col){
+        countMine = mineSeeker.countForAll(row, col);
+        Button button = buttons[row][col];
+        button.setText(" " + countMine);
+    }
 
-        }
+//    private TextWatcher textWatcher = new TextWatcher() {
+//        @Override
+//        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//
+//        }
+//
+//        @Override
+//        public void onTextChanged(CharSequence s, int start, int before, int count) {
+//
+//        }
+//
+//        @Override
+//        public void afterTextChanged(Editable s) {
+//
+//        }
+//
+//
+//    };
 
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-        }
-
-        @Override
-        public void afterTextChanged(Editable s) {
-
-        }
-
-
-    };
 
     // 4 * 6
     //      0   1   2   3   4   5   col
