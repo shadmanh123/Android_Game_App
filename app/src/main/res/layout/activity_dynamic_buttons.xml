@@ -90,13 +90,13 @@
         android:id="@+id/timesPlayed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="68dp"
+        android:layout_marginStart="16dp"
         android:layout_marginBottom="4dp"
         android:background="@android:drawable/screen_background_light_transparent"
         android:text="TextView"
         android:textColor="@color/primaryDarkColor"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
