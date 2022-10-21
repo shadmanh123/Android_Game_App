@@ -55,6 +55,7 @@ public class OptionActivity extends AppCompatActivity {
             String btnText = boardSize + " rows x " + numMine + " columns";
             RadioButton button = new RadioButton(this);
             button.setText(btnText);
+            //button.setBackgroundColor(0);
             //button.setText(boardSize + " rows x " + numMine + " columns");
 
             button.setOnClickListener(new View.OnClickListener() {

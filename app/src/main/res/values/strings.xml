@@ -5,15 +5,34 @@
     <string name="help">Help</string>
     <string name="helpMessage">
         \n
-        6.1 The about-the-author text must include a hyperlink to the CMPT 276 home-page. \n
-        6.2 The game information text must explain some of the basics about the game. You must \n
-        use your own wording, not copying the text from the assignment document. Your text \n
-        should reflect the theme of your game. \n
-        6.3 The Help screen must provide the correct citation for any images, icons, or other \n
-        resources (such as music) used in the game (for copyright purposes). Include a \n
-        hyperlink if applicable. \n
-        6.4 Pressing the Android back button on the Help screen returns to the Main Menu.
+        The creators of this game are Jenna and Shadman. For more information about the authors,
+        check out this resource: https://opencoursehub.cs.sfu.ca/bfraser/grav-cms/cmpt276/home\n
+        \n
+        Bugs Bunny and the other Looney Tunes characters have misplaced all the bombs that
+        they were planning to use as part of their shenanigans. It is your job to find all the bombs
+        so that unsuspecting characters do not get hurt! When you tap "Play Game" button, you will
+        be introduced to a grid. Each cell in the grid represents an area where some character
+        may have misplaced the bomb. You will tap on an area where you think the bomb is located.
+        If the bomb is found in that area, you will see the bomb pop up. If there is no bomb,
+        then you will see a number that represents the total number of bombs there are present in
+        that row and column. The game will count the total number of taps you have done on areas
+        without any bombs. Each tap represents 1hr of time wasted. The objective is to find all
+        the bombs quickly!\n
+        \n
+        We have used resources from the following sources to make this game: \n
+        https://www.fatherly.com/play/how-stream-classic-looney-tunes-online-right-now\n
+        https://www.youtube.com/watch?v=XwWZlDKXACs\n
+        https://stackoverflow.com/questions/7965494/how-to-put-some-delay-in-calling-an-activity
+        -from-another-activity\n
+        https://stackoverflow.com/questions/38450220/how-to-show-two-splash-screen-one-by-one-with
+        -skip-button-in-android\n
+        https://www.youtube.com/watch?v=0s6x3Sn4eYo
     </string>
     <string name="dynamicBtn">Mine Seeker Game</string>
     <string name="hello_world">Hello, welcome to mine seekers</string>
+    <string name="Welcome_Message">
+        Welcome to Bomb Searcher!
+        This game is created by Jenna and Shadman. We hope you enjoy!
+        Click anywhere to continue.
+    </string>
 </resources>
