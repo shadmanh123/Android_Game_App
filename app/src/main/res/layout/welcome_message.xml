@@ -15,7 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tvWelcomeMessage"
         app:layout_constraintTop_toTopOf="@+id/imageView"
-        app:srcCompat="@drawable/icon_mines" />
+        app:srcCompat="@drawable/icon_treasure" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -27,11 +27,11 @@
         app:layout_constraintEnd_toStartOf="@+id/tvWelcomeMessage"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tvWelcomeMessage"
-        app:srcCompat="@drawable/icon_mines" />
+        app:srcCompat="@drawable/icon_treasure" />
 
     <TextView
         android:id="@+id/tvWelcomeMessage"
-        android:layout_width="205dp"
+        android:layout_width="215dp"
         android:layout_height="101dp"
         android:background="#FFFFFF"
         android:text="@string/Welcome_Message"

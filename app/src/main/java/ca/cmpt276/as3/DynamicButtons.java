@@ -160,7 +160,7 @@ public class DynamicButtons extends AppCompatActivity {
         int newHeight = button.getHeight() - 100;
         // Image from Crystal Clear icon set, under LGPL
         // http://commons.wikimedia.org/wiki/Crystal_Clear
-        Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.icon_mines);
+        Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.icon_treasure);
         Bitmap scaledBitmap = Bitmap.createScaledBitmap(originalBitmap, newWidth, newHeight, true);
         Resources resource = getResources();
         button.setBackground(new BitmapDrawable(resource, scaledBitmap));

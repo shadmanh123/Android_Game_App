@@ -8,30 +8,31 @@
         The creators of this game are Jenna and Shadman. For more information about the authors,
         check out this resource: https://opencoursehub.cs.sfu.ca/bfraser/grav-cms/cmpt276/home\n
         \n
-        Bugs Bunny and the other Looney Tunes characters have misplaced all the bombs that
-        they were planning to use as part of their shenanigans. It is your job to find all the bombs
-        so that unsuspecting characters do not get hurt! When you tap "Play Game" button, you will
-        be introduced to a grid. Each cell in the grid represents an area where some character
-        may have misplaced the bomb. You will tap on an area where you think the bomb is located.
-        If the bomb is found in that area, you will see the bomb pop up. If there is no bomb,
-        then you will see a number that represents the total number of bombs there are present in
-        that row and column. The game will count the total number of taps you have done on areas
-        without any bombs. Each tap represents 1hr of time wasted. The objective is to find all
-        the bombs quickly!\n
+        You are a captain leading a group of pirates to find the hidden treasures on the island.
+        When you tap "Play Game" button, you will be introduced to a grid. Each cell in the grid
+        represents an area on the island where a treasure chest may be hidden. You will tap on an
+        area where you think the treasure chest is located. If the treasure chest is found in that
+        area, you will see the treasure chest pop up. If there is no treasure chest, then you will
+        see a number that represents the total number of treasure chests present in that row and
+        column. The game will count the total number of taps you have done on areas without any
+        treasure chests. Each tap represents 1hr of time wasted. The objective is to find all
+        the treasure quickly before other pirates discover the hidden treasures!\n
         \n
         We have used resources from the following sources to make this game: \n
-        https://www.fatherly.com/play/how-stream-classic-looney-tunes-online-right-now\n
+        https://wallpaperaccess.com/pirate-ship\n
+        https://www.shareicon.net/treasure-gold-34307\n
         https://www.youtube.com/watch?v=XwWZlDKXACs\n
         https://stackoverflow.com/questions/7965494/how-to-put-some-delay-in-calling-an-activity
         -from-another-activity\n
         https://stackoverflow.com/questions/38450220/how-to-show-two-splash-screen-one-by-one-with
         -skip-button-in-android\n
-        https://www.youtube.com/watch?v=0s6x3Sn4eYo
+        https://www.youtube.com/watch?v=0s6x3Sn4eYo\n
+
     </string>
     <string name="dynamicBtn">Mine Seeker Game</string>
     <string name="hello_world">Hello, welcome to mine seekers</string>
     <string name="Welcome_Message">
-        Welcome to Bomb Searcher!
+        Welcome to Treasure Finder!
         This game is created by Jenna and Shadman. We hope you enjoy!
         Click anywhere to continue.
     </string>
