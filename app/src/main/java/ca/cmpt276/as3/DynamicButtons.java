@@ -68,6 +68,9 @@ public class DynamicButtons extends AppCompatActivity {
         NUM_ROWS = singleton.getSavedBoardRow();
         NUM_COLS = singleton.getSavedBoardColumn();
 
+        setBlank();
+        setMines();
+
         TableLayout table = (TableLayout) findViewById(R.id.tableForButtons);
         for (int row = 0; row < NUM_ROWS; row++) {
             TableRow tableRow = new TableRow(this);
@@ -91,7 +94,16 @@ public class DynamicButtons extends AppCompatActivity {
                 button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                       gridButtonClicked(FINAL_ROW, FINAL_COL);
+                        switch (cellAt(FINAL_ROW, FINAL_COL).getValue()){
+                            case Cell.BOMB:
+                                gridButtonClicked(FINAL_ROW, FINAL_COL);
+                                break;
+
+                            case Cell.BLANK:
+                                button.setText("none");
+                                break;
+                        }
+
                     }
 
                 });
@@ -182,8 +194,20 @@ public class DynamicButtons extends AppCompatActivity {
             return null;
         }
         return cell.get(NUM_COLS * row + col);
-
     }
 
+    private boolean isRevealed(int row, int col){
+        if (cellAt(row, col).isRevealed()){
+            return true;
+        }
+        return false;
+    }
+
+    private boolean isScanned(int row, int col){
+        if (cellAt(row, col).isScanned()){
+            return true;
+        }
+        return false;
+    }
 
 }
