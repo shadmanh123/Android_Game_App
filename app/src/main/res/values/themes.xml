@@ -32,6 +32,6 @@
 
     <style name="AnimationsForDialog">
         <item name="android:windowEnterAnimation">@anim/zoom_in</item>
-        <item name="android:windowExitAnimation">@anim/zoom_out </item>
+        <item name="android:windowExitAnimation">@anim/slide_right</item>
     </style>
 </resources>

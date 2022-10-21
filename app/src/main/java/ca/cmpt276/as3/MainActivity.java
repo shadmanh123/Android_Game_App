@@ -14,6 +14,7 @@ import android.widget.ImageButton;
 
 public class MainActivity extends AppCompatActivity {
     Dialog dialog;
+    boolean buttonPressed = false;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,14 +24,20 @@ public class MainActivity extends AppCompatActivity {
         dialog = new Dialog(MainActivity.this);
         setUpSkipButton();
         startAnimation();
+        switchToMainMenu();
+    }
+
+    private void switchToMainMenu() {
         //TODO: Make activity change 4 seconds after animation is over
         new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(MainActivity.this, MainMenu.class));
+                buttonPressed = true;
             }
-        }, 8000);
-
+        }, 4000);
+        if(buttonPressed == true) {
+            startActivity(new Intent(MainActivity.this, MainMenu.class));
+        }
     }
 
 
