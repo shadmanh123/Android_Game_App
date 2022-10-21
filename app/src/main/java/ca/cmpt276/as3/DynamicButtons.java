@@ -45,11 +45,7 @@ public class DynamicButtons extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide(); // hide the app action bar
         setContentView(R.layout.activity_dynamic_buttons);
-        NUM_MINES = singleton.getSavedMinesValue();
-        TextView found = findViewById(R.id.foundMines);
-        found.setText("Found " + FOUND_MINES + " of " + NUM_MINES + " mines.");
-        TextView scanned = findViewById(R.id.scanUsed);
-        scanned.setText("#Scans used: " + SCANS_USED);
+
     }
 
 //    @Override
@@ -63,10 +59,16 @@ public class DynamicButtons extends AppCompatActivity {
         populateButtons();
     }
 
+
     private void populateButtons() {
         // use singleton to get the values stored in the singleton
         NUM_ROWS = singleton.getSavedBoardRow();
         NUM_COLS = singleton.getSavedBoardColumn();
+        NUM_MINES = singleton.getSavedMinesValue();
+        TextView found = findViewById(R.id.foundMines);
+        found.setText("Found " + FOUND_MINES + " of " + NUM_MINES + " mines.");
+        TextView scanned = findViewById(R.id.scanUsed);
+        scanned.setText("# Scans used: " + SCANS_USED);
 
         setBlank();
         setMines();
@@ -88,20 +90,36 @@ public class DynamicButtons extends AppCompatActivity {
                         TableRow.LayoutParams.MATCH_PARENT,
                         TableRow.LayoutParams.MATCH_PARENT,
                         1.0f));
-                button.setText("" + col + "," + row);
+                //button.setText("" + col + "," + row);
                 button.setPadding(0,0,0,0);
                 // make text not clip on small buttons
                 button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        found.setText("Found " + FOUND_MINES + " of " + NUM_MINES + " mines.");
+                        scanned.setText("# Scans used: " + SCANS_USED);
+
+                        //int count = countMines(FINAL_ROW, FINAL_COL);
+                        int count = countForAll(FINAL_ROW, FINAL_COL);
                         switch (cellAt(FINAL_ROW, FINAL_COL).getValue()){
                             case Cell.BOMB:
+                                if(!isRevealed(FINAL_ROW, FINAL_COL)){
                                 gridButtonClicked(FINAL_ROW, FINAL_COL);
+                                FOUND_MINES++;
+                                cellAt(FINAL_ROW, FINAL_COL).setRevealed(true);
+                            }else
+                                button.setText(" " + count);
+                                SCANS_USED++;
                                 break;
 
                             case Cell.BLANK:
-                                button.setText("none");
+                                if(!isScanned(FINAL_ROW, FINAL_COL)){
+                                    SCANS_USED++;
+                                    button.setText(" " + count);
+                                    cellAt(FINAL_ROW, FINAL_COL).setScanned(true);
+                                }
                                 break;
+
                         }
 
                     }
@@ -135,7 +153,7 @@ public class DynamicButtons extends AppCompatActivity {
 
 
         // change text on buttons
-         button.setText("" + col);
+         //button.setText("" + col);
     }
 
     private void lockButtonSizes() {
@@ -197,17 +215,43 @@ public class DynamicButtons extends AppCompatActivity {
     }
 
     private boolean isRevealed(int row, int col){
-        if (cellAt(row, col).isRevealed()){
-            return true;
-        }
-        return false;
+        return cellAt(row, col).isRevealed();
     }
 
     private boolean isScanned(int row, int col){
-        if (cellAt(row, col).isScanned()){
-            return true;
+        return cellAt(row, col).isScanned();
+    }
+
+    private int countMines(int row, int col){
+        int count = 0;
+        for (int i = 0; i < NUM_ROWS; i++) {
+            for (int j = 0; j < NUM_COLS; j++) {
+                if(i == row || j == col) {
+                    if (cellAt(i, j).getValue() == Cell.BOMB && !isRevealed(i, j)) {
+                        count++;
+                    }
+                }
+            }
         }
-        return false;
+        return count;
+    }
+
+    private int countForAll(int row, int col){
+        int count = 0;
+        for (int i = 0; i < NUM_ROWS; i++) {
+            for (int j = 0; j < NUM_COLS; j++) {
+                if(i == row || j == col) {
+                    if (cellAt(i, j).getValue() == Cell.BOMB && !isRevealed(i, j)) {
+                        count++;
+                    }else if(cellAt(i, j).getValue() == Cell.BOMB && isRevealed(i, j)){
+                        if(count > 0){
+                            count--;
+                        }
+                    }
+                }
+            }
+        }
+        return count;
     }
 
 }
