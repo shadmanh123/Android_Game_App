@@ -9,11 +9,15 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -101,7 +105,8 @@ public class DynamicButtons extends AppCompatActivity {
                         found.setText("Found " + FOUND_MINES + " of " + NUM_MINES + " mines.");
                         scanned.setText("# Scans used: " + SCANS_USED);
 
-                        //int count = countMines(FINAL_ROW, FINAL_COL);
+                        //found.addTextChangedListener(textWatcher);
+
                         int count = mineSeeker.countForAll(FINAL_ROW, FINAL_COL);
 
                         switch (mineSeeker.cellAt(FINAL_ROW, FINAL_COL).getValue()){
@@ -181,6 +186,26 @@ public class DynamicButtons extends AppCompatActivity {
             }
         }
     }
+
+
+    private TextWatcher textWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+
+        }
+
+
+    };
 
     // 4 * 6
     //      0   1   2   3   4   5   col
