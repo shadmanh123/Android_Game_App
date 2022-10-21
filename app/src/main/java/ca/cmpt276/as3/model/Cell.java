@@ -7,17 +7,7 @@ public class Cell {
     private boolean isScanned;
     public static final int BOMB = -1;
     public static final int BLANK = 0;
-    //private static Cell instance = null;
 
-//    public Cell() {
-//    }
-//
-//    public static synchronized Cell getInstance() {
-//        if(instance == null) {
-//            instance = new Cell();
-//        }
-//        return instance;
-//    }
 
     public Cell(int value, boolean isRevealed, boolean isScanned) {
         this.value = value;

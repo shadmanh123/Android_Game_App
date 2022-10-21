@@ -9,7 +9,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TableLayout;
@@ -21,17 +20,19 @@ import java.util.List;
 import java.util.Random;
 
 import ca.cmpt276.as3.model.Cell;
+import ca.cmpt276.as3.model.MineSeeker;
 import ca.cmpt276.as3.model.Singleton;
 
 public class DynamicButtons extends AppCompatActivity {
 
     private Singleton singleton = Singleton.getInstance();
+    private MineSeeker mineSeeker= MineSeeker.getInstance();
     private int NUM_ROWS = 10;  // add values >= options values to fix java.lang.ArrayIndexOutOfBoundsException
     private int NUM_COLS = 15;  // fix java.lang.ArrayIndexOutOfBoundsException
     private int NUM_MINES;
     private int FOUND_MINES = 0;
     private int SCANS_USED = 0;
-    private List<Cell> cell = new ArrayList<>();
+    //private List<Cell> cell = new ArrayList<>();
     Button[][] buttons = new Button[NUM_ROWS][NUM_COLS];
 
 
@@ -69,8 +70,8 @@ public class DynamicButtons extends AppCompatActivity {
         TextView scanned = findViewById(R.id.scanUsed);
         scanned.setText("# Scans used: " + SCANS_USED);
 
-        setBlank();
-        setMines();
+        mineSeeker.setBlank();
+        mineSeeker.setMines();
 
         TableLayout table = (TableLayout) findViewById(R.id.tableForButtons);
         for (int row = 0; row < NUM_ROWS; row++) {
@@ -99,26 +100,27 @@ public class DynamicButtons extends AppCompatActivity {
                         scanned.setText("# Scans used: " + SCANS_USED);
 
                         //int count = countMines(FINAL_ROW, FINAL_COL);
-                        int count = countForAll(FINAL_ROW, FINAL_COL);
-                        switch (cellAt(FINAL_ROW, FINAL_COL).getValue()){
+                        int count = mineSeeker.countForAll(FINAL_ROW, FINAL_COL);
+                        switch (mineSeeker.cellAt(FINAL_ROW, FINAL_COL).getValue()){
                             case Cell.BOMB:
-                                if(!isRevealed(FINAL_ROW, FINAL_COL)){
+                                if(!mineSeeker.cellAt(FINAL_ROW, FINAL_COL).isRevealed()){
+                                //!mineSeeker.isRevealed(FINAL_ROW, FINAL_COL
                                 gridButtonClicked(FINAL_ROW, FINAL_COL);
                                 FOUND_MINES++;
                                 button.setText(" " + count);
-                                cellAt(FINAL_ROW, FINAL_COL).setRevealed(true);
-                            }else if(isRevealed(FINAL_ROW, FINAL_COL) && !isScanned(FINAL_ROW, FINAL_COL)) {
+                                mineSeeker.cellAt(FINAL_ROW, FINAL_COL).setRevealed(true);
+                            }else if(mineSeeker.cellAt(FINAL_ROW, FINAL_COL).isRevealed() && !mineSeeker.cellAt(FINAL_ROW, FINAL_COL).isScanned()) {
                                     button.setText(" " + count);
                                     SCANS_USED++;
-                                    cellAt(FINAL_ROW, FINAL_COL).setScanned(true);
+                                    mineSeeker.cellAt(FINAL_ROW, FINAL_COL).setScanned(true);
                                 }
                                 break;
 
                             case Cell.BLANK:
-                                if(!isScanned(FINAL_ROW, FINAL_COL)){
+                                if(!mineSeeker.cellAt(FINAL_ROW, FINAL_COL).isScanned()){
                                     SCANS_USED++;
                                     button.setText(" " + count);
-                                    cellAt(FINAL_ROW, FINAL_COL).setScanned(true);
+                                    mineSeeker.cellAt(FINAL_ROW, FINAL_COL).setScanned(true);
                                 }else {
                                     button.setText(" " + count);
                                 }
@@ -191,71 +193,71 @@ public class DynamicButtons extends AppCompatActivity {
     // 20 = 6 * 3 + 2
     // make 20 the index of its cell stored in the List
 
-    private void setBlank(){
-        for (int row = 0; row < NUM_ROWS; row++) {
-            for (int col = 0; col < NUM_COLS; col++) {
-                cell.add(NUM_COLS * row + col, new Cell(Cell.BLANK, false, false));
-            }
-        }
-    }
-
-    private void setMines(){
-        int current_mines = 0;
-        while(current_mines < NUM_MINES){
-            int row = new Random().nextInt(NUM_ROWS);
-            int col = new Random().nextInt(NUM_COLS);
-            if(cellAt(row, col).getValue() == Cell.BLANK){
-                cellAt(row, col).setValue(Cell.BOMB);
-                current_mines++;
-            }
-        }
-    }
-
-    public Cell cellAt(int row, int col) {
-        if (row < 0 || row >= NUM_ROWS || col < 0 || col >= NUM_COLS) {
-            return null;
-        }
-        return cell.get(NUM_COLS * row + col);
-    }
-
-    private boolean isRevealed(int row, int col){
-        return cellAt(row, col).isRevealed();
-    }
-
-    private boolean isScanned(int row, int col){
-        return cellAt(row, col).isScanned();
-    }
-
-    private int countMines(int row, int col){
-        int count = 0;
-        for (int i = 0; i < NUM_ROWS; i++) {
-            for (int j = 0; j < NUM_COLS; j++) {
-                if(i == row || j == col) {
-                    if (cellAt(i, j).getValue() == Cell.BOMB && !isRevealed(i, j)) {
-                        count++;
-                    }
-                }
-            }
-        }
-        return count;
-    }
-
-    private int countForAll(int row, int col){
-        int count = 0;
-        for (int i = 0; i < NUM_ROWS; i++) {
-            for (int j = 0; j < NUM_COLS; j++) {
-                if(i == row || j == col) {
-                    if (cellAt(i, j).getValue() == Cell.BOMB && !isRevealed(i, j)) {
-                        count++;
-                    }else if(cellAt(i, j).getValue() == Cell.BOMB && isRevealed(i, j)){
-                        if(count > 0){
-                            count--;
-                        }
-                    }
-                }
-            }
-        }
-        return count;
-    }
+//    private void setBlank(){
+//        for (int row = 0; row < NUM_ROWS; row++) {
+//            for (int col = 0; col < NUM_COLS; col++) {
+//                cell.add(NUM_COLS * row + col, new Cell(Cell.BLANK, false, false));
+//            }
+//        }
+//    }
+//
+//    private void setMines(){
+//        int current_mines = 0;
+//        while(current_mines < NUM_MINES){
+//            int row = new Random().nextInt(NUM_ROWS);
+//            int col = new Random().nextInt(NUM_COLS);
+//            if(cellAt(row, col).getValue() == Cell.BLANK){
+//                cellAt(row, col).setValue(Cell.BOMB);
+//                current_mines++;
+//            }
+//        }
+//    }
+//
+//    public Cell cellAt(int row, int col) {
+//        if (row < 0 || row >= NUM_ROWS || col < 0 || col >= NUM_COLS) {
+//            return null;
+//        }
+//        return cell.get(NUM_COLS * row + col);
+//    }
+//
+//    private boolean isRevealed(int row, int col){
+//        return cellAt(row, col).isRevealed();
+//    }
+//
+//    private boolean isScanned(int row, int col){
+//        return cellAt(row, col).isScanned();
+//    }
+//
+//    private int countMines(int row, int col){
+//        int count = 0;
+//        for (int i = 0; i < NUM_ROWS; i++) {
+//            for (int j = 0; j < NUM_COLS; j++) {
+//                if(i == row || j == col) {
+//                    if (cellAt(i, j).getValue() == Cell.BOMB && !isRevealed(i, j)) {
+//                        count++;
+//                    }
+//                }
+//            }
+//        }
+//        return count;
+//    }
+//
+//    private int countForAll(int row, int col){
+//        int count = 0;
+//        for (int i = 0; i < NUM_ROWS; i++) {
+//            for (int j = 0; j < NUM_COLS; j++) {
+//                if(i == row || j == col) {
+//                    if (cellAt(i, j).getValue() == Cell.BOMB && !isRevealed(i, j)) {
+//                        count++;
+//                    }else if(cellAt(i, j).getValue() == Cell.BOMB && isRevealed(i, j)){
+//                        if(count > 0){
+//                            count--;
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//        return count;
+//    }
 
 }
