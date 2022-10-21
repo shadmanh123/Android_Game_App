@@ -1,17 +1,17 @@
-package ca.cmpt276.as3;
+package ca.cmpt276.as3.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
+
+import ca.cmpt276.as3.MainMenu;
+import ca.cmpt276.as3.R;
 
 public class MainActivity extends AppCompatActivity {
     Dialog dialog;
