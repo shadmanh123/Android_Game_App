@@ -14,10 +14,10 @@
         android:background="@android:drawable/screen_background_light"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.748"
+        app:layout_constraintHorizontal_bias="0.707"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.474" />
+        app:layout_constraintVertical_bias="0.469" />
 
     <TextView
         android:id="@+id/select_mines"
@@ -28,6 +28,7 @@
         android:background="#FFFFFF"
         android:text="Select Number Mines"
         android:textColor="@color/black"
+        android:textSize="17sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -40,6 +41,7 @@
         android:background="#FFFFFF"
         android:text="Select Board Size"
         android:textColor="@color/black"
+        android:textSize="17sp"
         app:layout_constraintEnd_toStartOf="@+id/select_mines"
         app:layout_constraintHorizontal_bias="0.154"
         app:layout_constraintStart_toStartOf="parent"

@@ -26,28 +26,39 @@
     <!--        tools:layout_editor_absoluteX="1dp"-->
     <!--        tools:layout_editor_absoluteY="1dp">-->
 
-    <!--    <TextView-->
-    <!--        android:id="@+id/textView1"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:text="@string/hello_world"/>-->
+<!--    <TextView-->
+<!--        android:id="@+id/textView1"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/hello_world"/>-->
 
-    <!--    <TableLayout-->
-    <!--        android:id="@+id/tableForButtons"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="match_parent"-->
-    <!--        android:layout_alignLeft="@+id/textView1"-->
-    <!--        android:layout_below="@+id/textView1"-->
-    <!--        android:layout_marginTop="0dp"-->
-    <!--        android:stretchColumns="*">-->
-    <!--    </TableLayout>-->
+<!--    <TableLayout-->
+<!--        android:id="@+id/tableForButtons"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_alignLeft="@+id/textView1"-->
+<!--        android:layout_below="@+id/textView1"-->
+<!--        android:layout_marginTop="0dp"-->
+<!--        android:stretchColumns="*">-->
+<!--    </TableLayout>-->
+
+    <TextView
+        android:id="@+id/foundMines"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        android:textColor="@color/primaryDarkColor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TableLayout
         android:id="@+id/tableForButtons"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_below="@+id/textView1"
-        android:layout_alignLeft="@+id/textView1"
+        android:layout_below="@+id/foundMines"
+        android:layout_alignLeft="@+id/foundMines"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"
@@ -58,9 +69,31 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView1">
+        app:layout_constraintTop_toBottomOf="@+id/foundMines">
 
     </TableLayout>
+
+    <TextView
+        android:id="@+id/scanUsed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="44dp"
+        android:text="TextView"
+        android:textColor="@color/primaryDarkColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/timesPlayed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="68dp"
+        android:layout_marginBottom="4dp"
+        android:text="TextView"
+        android:textColor="@color/primaryDarkColor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
