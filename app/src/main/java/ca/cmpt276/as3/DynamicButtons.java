@@ -104,10 +104,11 @@ public class DynamicButtons extends AppCompatActivity {
                         //int count = countMines(FINAL_ROW, FINAL_COL);
                         int count = mineSeeker.countForAll(FINAL_ROW, FINAL_COL);
                         switch (mineSeeker.cellAt(FINAL_ROW, FINAL_COL).getValue()){
+
                             case Cell.BOMB:
                                 if(!mineSeeker.cellAt(FINAL_ROW, FINAL_COL).isRevealed()){
                                 //!mineSeeker.isRevealed(FINAL_ROW, FINAL_COL
-                                gridButtonClicked(FINAL_ROW, FINAL_COL);
+                                gridButtonClicked(FINAL_ROW, FINAL_COL); // set bomb image
                                 FOUND_MINES++;
                                 button.setText(" " + count);
                                 mineSeeker.cellAt(FINAL_ROW, FINAL_COL).setRevealed(true);
@@ -120,8 +121,8 @@ public class DynamicButtons extends AppCompatActivity {
 
                             case Cell.BLANK:
                                 if(!mineSeeker.cellAt(FINAL_ROW, FINAL_COL).isScanned()){
-                                    SCANS_USED++;
                                     button.setText(" " + count);
+                                    SCANS_USED++;
                                     mineSeeker.cellAt(FINAL_ROW, FINAL_COL).setScanned(true);
                                 }else {
                                     button.setText(" " + count);
