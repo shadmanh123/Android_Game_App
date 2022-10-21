@@ -68,27 +68,6 @@ public class MineSeeker {
         return cell.get(NUM_COLS * row + col);
     }
 
-//    public boolean isRevealed(int row, int col){
-//        return cellAt(row, col).isRevealed();
-//    }
-//
-//    public boolean isScanned(int row, int col){
-//        return cellAt(row, col).isScanned();
-//    }
-
-    public int countMines(int row, int col){
-        int count = 0;
-        for (int i = 0; i < NUM_ROWS; i++) {
-            for (int j = 0; j < NUM_COLS; j++) {
-                if(i == row || j == col) {
-                    if (cellAt(i, j).getValue() == Cell.BOMB && !cellAt(i, j).isRevealed()) {
-                        count++;
-                    }
-                }
-            }
-        }
-        return count;
-    }
 
     public int countForAll(int row, int col){
         int count = 0;

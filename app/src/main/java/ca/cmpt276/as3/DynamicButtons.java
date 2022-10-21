@@ -69,6 +69,8 @@ public class DynamicButtons extends AppCompatActivity {
         found.setText("Found " + FOUND_MINES + " of " + NUM_MINES + " mines.");
         TextView scanned = findViewById(R.id.scanUsed);
         scanned.setText("# Scans used: " + SCANS_USED);
+        TextView time = findViewById(R.id.timesPlayed);
+        time.setText("Times Played: ");
 
         mineSeeker.setBlank();
         mineSeeker.setMines();

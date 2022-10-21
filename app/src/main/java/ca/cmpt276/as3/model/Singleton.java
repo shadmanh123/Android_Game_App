@@ -7,7 +7,6 @@ public class Singleton {
     private int savedBoardRow = 5; // default value
     private int savedBoardColumn = 10; // default value
 
-
     private Singleton() {
 
     }
