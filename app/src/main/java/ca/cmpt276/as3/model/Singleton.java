@@ -3,7 +3,7 @@ package ca.cmpt276.as3.model;
 public class Singleton {
 
     private static Singleton instance = null;
-    private int savedMinesValue;
+    private int savedMinesValue = 6;
     private int savedBoardRow = 5; // default value
     private int savedBoardColumn = 10; // default value
 

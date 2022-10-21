@@ -14,22 +14,27 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
-import android.widget.Toast;
+import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
+import ca.cmpt276.as3.model.Cell;
 import ca.cmpt276.as3.model.Singleton;
 
 public class DynamicButtons extends AppCompatActivity {
 
-    //private static final int NUM_ROWS = 4;
-    //private static final int NUM_COLS = 6;
 
+    private Singleton singleton = Singleton.getInstance();
     private int NUM_ROWS = 10;  // add values >= options values to fix java.lang.ArrayIndexOutOfBoundsException
     private int NUM_COLS = 15;  // fix java.lang.ArrayIndexOutOfBoundsException
-
+    private int NUM_MINES;
+    private int FOUND_MINES = 0;
+    private int SCANS_USED = 0;
+    private List<Cell> cell = new ArrayList<>();
     Button[][] buttons = new Button[NUM_ROWS][NUM_COLS];
 
-    private Singleton singleton;
 
     public static Intent makeIntent(Context context){
         return new Intent(context, DynamicButtons.class);
@@ -40,6 +45,11 @@ public class DynamicButtons extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide(); // hide the app action bar
         setContentView(R.layout.activity_dynamic_buttons);
+        NUM_MINES = singleton.getSavedMinesValue();
+        TextView found = findViewById(R.id.foundMines);
+        found.setText("Found " + FOUND_MINES + " of " + NUM_MINES + " mines.");
+        TextView scanned = findViewById(R.id.scanUsed);
+        scanned.setText("#Scans used: " + SCANS_USED);
     }
 
 //    @Override
@@ -53,10 +63,8 @@ public class DynamicButtons extends AppCompatActivity {
         populateButtons();
     }
 
-
     private void populateButtons() {
         // use singleton to get the values stored in the singleton
-        singleton = Singleton.getInstance();
         NUM_ROWS = singleton.getSavedBoardRow();
         NUM_COLS = singleton.getSavedBoardColumn();
 
@@ -83,7 +91,7 @@ public class DynamicButtons extends AppCompatActivity {
                 button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        gridButtonClicked(FINAL_ROW, FINAL_COL);
+                       gridButtonClicked(FINAL_ROW, FINAL_COL);
                     }
 
                 });
@@ -101,7 +109,7 @@ public class DynamicButtons extends AppCompatActivity {
         button.setTextColor(getResources().getColor(R.color.white));
 
         // lock button sizes
-        lockButtonSizes();
+        lockButtonSizes(); // useless
 
         // scale image to button:
         int newWidth = button.getWidth() - 100;
@@ -135,8 +143,47 @@ public class DynamicButtons extends AppCompatActivity {
         }
     }
 
+    // 4 * 6
+    //      0   1   2   3   4   5   col
 
+    // 0    0   1   2   3   4   5
+    // 1    6   7   8   9   10  11
+    // 2    12  13  14  15  16  17
+    // 3    18  19  20  21  22  23
+    //row
 
+    // eg. 20 (row, col) = (3, 2)
+    // 20 = NUM_COLS * row + col
+    // 20 = 6 * 3 + 2
+    // make 20 the index of its cell stored in the List
+
+    private void setBlank(){
+        for (int row = 0; row < NUM_ROWS; row++) {
+            for (int col = 0; col < NUM_COLS; col++) {
+                cell.add(NUM_COLS * row + col, new Cell(Cell.BLANK, false, false));
+            }
+        }
+    }
+
+    private void setMines(){
+        int current_mines = 0;
+        while(current_mines < NUM_MINES){
+            int row = new Random().nextInt(NUM_ROWS);
+            int col = new Random().nextInt(NUM_COLS);
+            if(cellAt(row, col).getValue() == Cell.BLANK){
+                cellAt(row, col).setValue(Cell.BOMB);
+                current_mines++;
+            }
+        }
+    }
+
+    public Cell cellAt(int row, int col) {
+        if (row < 0 || row >= NUM_ROWS || col < 0 || col >= NUM_COLS) {
+            return null;
+        }
+        return cell.get(NUM_COLS * row + col);
+
+    }
 
 
 }
