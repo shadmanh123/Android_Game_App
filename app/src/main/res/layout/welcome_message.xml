@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@android:drawable/screen_background_light_transparent">
 
     <ImageView
         android:id="@+id/imageView2"
@@ -11,6 +12,7 @@
         android:layout_height="75dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
+        android:background="@android:drawable/screen_background_light_transparent"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tvWelcomeMessage"
@@ -23,6 +25,7 @@
         android:layout_height="75dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
+        android:background="@android:drawable/screen_background_light_transparent"
         app:layout_constraintBottom_toBottomOf="@+id/tvWelcomeMessage"
         app:layout_constraintEnd_toStartOf="@+id/tvWelcomeMessage"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,7 +36,7 @@
         android:id="@+id/tvWelcomeMessage"
         android:layout_width="215dp"
         android:layout_height="101dp"
-        android:background="#FFFFFF"
+        android:background="@android:drawable/screen_background_light_transparent"
         android:text="@string/Welcome_Message"
         android:textColor="@color/black"
         android:textSize="16sp"
