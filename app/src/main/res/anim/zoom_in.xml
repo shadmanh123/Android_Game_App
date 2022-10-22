@@ -4,7 +4,7 @@
         android:duration = "900"
         android:fromYScale="0.2dp"
         android:fromXScale="0.2dp"
-        android:toYScale="130dp"
+        android:toYScale="134dp"
         android:toXScale="422dp"
         android:pivotY="50%"
         android:pivotX="50%"

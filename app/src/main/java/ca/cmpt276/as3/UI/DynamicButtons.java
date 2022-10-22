@@ -2,6 +2,7 @@ package ca.cmpt276.as3.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -23,6 +24,7 @@ import ca.cmpt276.as3.model.MineSeeker;
 import ca.cmpt276.as3.model.Singleton;
 
 public class DynamicButtons extends AppCompatActivity {
+    Dialog dialog;
     Handler handler;
     Runnable runnable;
     private Singleton singleton = Singleton.getInstance();
@@ -151,6 +153,21 @@ public class DynamicButtons extends AppCompatActivity {
                             handler.postDelayed(runnable, 1000);
                         }
 
+                        if(FOUND_MINES == NUM_MINES){
+                            dialog = new Dialog(DynamicButtons.this);
+                            dialog.setContentView(R.layout.winning_message);
+                            dialog.getWindow().setWindowAnimations(R.style.AnimationsForDialog);
+                            dialog.show();
+                            handler = new Handler();
+                            runnable = new Runnable() {
+                                @Override
+                                public void run() {
+                                    startActivity(new Intent(DynamicButtons.this,
+                                            MainMenu.class));
+                                }
+                            };
+                            handler.postDelayed(runnable, 3000);
+                        }
                     }
 
                 });

@@ -37,5 +37,11 @@
         -skip-button-in-android">Stackoverflow - show splash screen    </a>
         <a href="https://www.youtube.com/watch?v=0s6x3Sn4eYo">Slide Animation   </a>
     </string>
+    <string name="WinningMessage">
+        Congratulations Captain!\n
+        We have discovered all the hidden treasures! We Arrrrr rich! Let us celebrate by giving
+        the creators of this game a 100%!\n
+        Click anywhere to continue.
+    </string>
 
 </resources>
