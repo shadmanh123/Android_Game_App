@@ -13,7 +13,10 @@ import android.widget.Toast;
 
 import ca.cmpt276.as3.R;
 import ca.cmpt276.as3.model.Singleton;
-
+/**
+ * Player decides what configuration they would prefer for the grid size and number of
+ * treasures.
+ */
 public class OptionActivity extends AppCompatActivity {
 
     private Singleton singleton;

@@ -12,6 +12,10 @@ import android.widget.Button;
 
 import ca.cmpt276.as3.R;
 
+/**
+ * MainActivity has welcome message for player and changes
+ * to MainMenu activity.
+ */
 public class MainActivity extends AppCompatActivity {
     Dialog dialog;
     Runnable runnable;

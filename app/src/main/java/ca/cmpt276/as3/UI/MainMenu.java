@@ -7,7 +7,10 @@ import android.os.Bundle;
 import android.widget.Button;
 
 import ca.cmpt276.as3.R;
-
+/**
+ * MainMenu provides 3 options for players. These options are to play the game,
+ * change grid and treasure settings or go to the help screen.
+ */
 public class MainMenu extends AppCompatActivity {
 
     @Override

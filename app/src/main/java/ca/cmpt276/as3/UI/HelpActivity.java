@@ -9,7 +9,11 @@ import android.text.method.LinkMovementMethod;
 import android.widget.TextView;
 
 import ca.cmpt276.as3.R;
-
+/**
+ * Player is provided information about the creators of the game
+ * as well as the instructions for the game and references to
+ * places where resources where used.
+ */
 public class HelpActivity extends AppCompatActivity {
 
     public static Intent makeIntent(Context context){
