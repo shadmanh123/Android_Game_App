@@ -1,11 +1,12 @@
-package ca.cmpt276.as3;
+package ca.cmpt276.as3.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.TextView;
+
+import ca.cmpt276.as3.R;
 
 public class HelpActivity extends AppCompatActivity {
 

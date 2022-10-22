@@ -1,4 +1,4 @@
-package ca.cmpt276.as3;
+package ca.cmpt276.as3.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,6 +11,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import ca.cmpt276.as3.R;
 import ca.cmpt276.as3.model.Singleton;
 
 public class OptionActivity extends AppCompatActivity {

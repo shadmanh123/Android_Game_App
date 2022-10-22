@@ -10,7 +10,6 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 
-import ca.cmpt276.as3.MainMenu;
 import ca.cmpt276.as3.R;
 
 public class MainActivity extends AppCompatActivity {
