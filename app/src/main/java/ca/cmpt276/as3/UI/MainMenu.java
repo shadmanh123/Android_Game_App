@@ -24,7 +24,6 @@ public class MainMenu extends AppCompatActivity {
 
     private void setUpOptionsButton(){
         Button optionBtn = (Button)findViewById(R.id.option_btn);
-        //btn.setOnClickListener(v -> startActivity(new Intent(MainMenu.this, OptionActivity.class)));
         optionBtn.setOnClickListener(v -> {
             Intent intent = OptionActivity.makeIntent(MainMenu.this);
             startActivity(intent);
@@ -53,7 +52,6 @@ public class MainMenu extends AppCompatActivity {
         a.addCategory(Intent.CATEGORY_HOME);
         a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(a);
-//        super.onBackPressed();
     }
 
 }

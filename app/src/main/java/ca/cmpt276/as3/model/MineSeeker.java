@@ -63,31 +63,6 @@ public class MineSeeker {
         }
     }
 
-//    public void updateMineCount(int row, int column){
-//        int exposedMineCount = 0;
-//        int hiddenMines = 0;
-//        for (int rows = 0; rows < NUM_ROWS; rows++) {
-//            if(cellAt(rows,column).getValue() == Cell.BOMB && cellAt(rows,column).isRevealed()){
-//                exposedMineCount++;
-//            }
-//        }
-//        for (int columns = 0; columns < NUM_COLS; columns++) {
-//            if (cellAt(row, columns).getValue() == Cell.BOMB && cellAt(row, columns).isRevealed()) {
-//                exposedMineCount++;
-//            }
-//        }
-//        for(int rows = 0; rows < NUM_ROWS; rows++){
-//            int oldNumberOfMines = countForAll(row,column);
-//            hiddenMines = oldNumberOfMines - exposedMineCount;
-//            cellAt(rows,column).setNumberOfHiddenMines(hiddenMines);
-//        }
-//        for(int columns = 0; columns < NUM_ROWS; columns++){
-//            int oldNumberOfMines = countForAll(row,column);
-//            hiddenMines = oldNumberOfMines - exposedMineCount;
-//            cellAt(row,columns).setNumberOfHiddenMines(hiddenMines);
-//        }
-//    }
-
     // get cell index
     public Cell cellAt(int row, int col) {
         if (row < 0 || row >= NUM_ROWS || col < 0 || col >= NUM_COLS) {

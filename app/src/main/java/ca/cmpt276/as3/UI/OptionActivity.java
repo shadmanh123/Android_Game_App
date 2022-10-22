@@ -41,10 +41,6 @@ public class OptionActivity extends AppCompatActivity {
 
         // use singleton to set the values stored in the singleton
         singleton = Singleton.getInstance();
-
-
-
-        //onBackPressed();
     }
 
     private void createRadioBoardButtons() {
@@ -59,8 +55,6 @@ public class OptionActivity extends AppCompatActivity {
             String btnText = boardSize + " rows x " + numMine + " columns";
             RadioButton button = new RadioButton(this);
             button.setText(btnText);
-            //button.setBackgroundColor(0);
-            //button.setText(boardSize + " rows x " + numMine + " columns");
 
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -146,11 +140,4 @@ public class OptionActivity extends AppCompatActivity {
         SharedPreferences prefs = context.getSharedPreferences("AppPrefs", MODE_PRIVATE);
         return prefs.getInt("Board size column", 0);
     }
-
-
-//    public void onBackPressed(){
-//        startActivity(new Intent(OptionActivity.this, MainMenu.class));
-//        finish();
-//    }
-
 }

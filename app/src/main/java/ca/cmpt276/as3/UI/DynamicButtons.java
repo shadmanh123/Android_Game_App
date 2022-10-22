@@ -54,12 +54,6 @@ public class DynamicButtons extends AppCompatActivity {
 
     }
 
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        lockButtonSizes();
-//    }
-
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
         populateButtons();
@@ -81,8 +75,7 @@ public class DynamicButtons extends AppCompatActivity {
         found.setText("Found " + FOUND_MINES + " of " + NUM_MINES + " mines.");
         TextView scanned = findViewById(R.id.scanUsed);
         scanned.setText("# Scans used: " + SCANS_USED);
-//        TextView time = findViewById(R.id.timesPlayed);
-//        time.setText("Times Played: ");
+
 
         mineSeeker.setBlank();
         mineSeeker.setMines();
@@ -119,24 +112,19 @@ public class DynamicButtons extends AppCompatActivity {
                                 bomb_sound.start();
                                 gridButtonClicked(FINAL_ROW, FINAL_COL); // set bomb image
                                 FOUND_MINES++;
-                                //button.setText(" " + count);
                                 mineSeeker.cellAt(FINAL_ROW, FINAL_COL).setRevealed(true);
                                 }else if(mineSeeker.cellAt(FINAL_ROW, FINAL_COL).isRevealed() && !mineSeeker.cellAt(FINAL_ROW, FINAL_COL).isScanned()) {
-                                    //button.setText(" " + countMine);
                                     SCANS_USED++;
                                     mineSeeker.cellAt(FINAL_ROW, FINAL_COL).setScanned(true);
                                 }
-                                //button.setText(" " + countMine);
                                 break;
 
                             case Cell.BLANK:
                                 if(!mineSeeker.cellAt(FINAL_ROW, FINAL_COL).isScanned()){
-                                    //button.setText(" " + countMine);
                                     blank_sound.start();
                                     SCANS_USED++;
                                     mineSeeker.cellAt(FINAL_ROW, FINAL_COL).setScanned(true);
                                 }else {
-                                    //button.setText(" " + countMine);
                                     blank_sound.start();
                                 }
                                 break;
@@ -193,16 +181,10 @@ public class DynamicButtons extends AppCompatActivity {
         // scale image to button:
         int newWidth = button.getWidth() - 100;
         int newHeight = button.getHeight() - 100;
-        // Image from Crystal Clear icon set, under LGPL
-        // http://commons.wikimedia.org/wiki/Crystal_Clear
         Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.icon_treasure);
         Bitmap scaledBitmap = Bitmap.createScaledBitmap(originalBitmap, newWidth, newHeight, true);
         Resources resource = getResources();
         button.setBackground(new BitmapDrawable(resource, scaledBitmap));
-
-
-        // change text on buttons
-         //button.setText("" + col);
     }
 
     // lock btn sizes
@@ -225,10 +207,10 @@ public class DynamicButtons extends AppCompatActivity {
 
 
     // update countMines
-    private void updateCount(int row, int col){
-        countMine = mineSeeker.countForAll(row, col);
-        mineSeeker.cellAt(row,col).setNumberOfHiddenMines(countMine);
-        Button button = buttons[row][col];
+    private void updateCount(int row, int column){
+        countMine = mineSeeker.countForAll(row, column);
+        mineSeeker.cellAt(row,column).setNumberOfHiddenMines(countMine);
+        Button button = buttons[row][column];
         button.setText(" " + countMine);
     }
 
