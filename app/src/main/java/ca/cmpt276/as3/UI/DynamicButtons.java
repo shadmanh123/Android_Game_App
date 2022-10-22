@@ -69,7 +69,7 @@ public class DynamicButtons extends AppCompatActivity {
         TextView scanned = findViewById(R.id.scanUsed);
         scanned.setText("# Scans used: " + SCANS_USED);
         TextView time = findViewById(R.id.timesPlayed);
-        time.setText("Times Played: ");
+        //time.setText("Times Played: ");
 
         mineSeeker.setBlank();
         mineSeeker.setMines();
