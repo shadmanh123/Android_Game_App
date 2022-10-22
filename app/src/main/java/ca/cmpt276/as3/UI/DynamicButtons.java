@@ -33,8 +33,7 @@ public class DynamicButtons extends AppCompatActivity {
     private int FOUND_MINES = 0;
     private int SCANS_USED = 0;
     private int countMine = 0;
-//    private int[][] countMines = new int[NUM_ROWS][NUM_COLS];
-    //private List<Cell> cell = new ArrayList<>();
+
     Button[][] buttons = new Button[NUM_ROWS][NUM_COLS];
 
 
@@ -61,10 +60,10 @@ public class DynamicButtons extends AppCompatActivity {
         populateButtons();
     }
 
-
+    // populate buttons using table layout
     private void populateButtons() {
-        MediaPlayer blank_sound = MediaPlayer.create(this, R.raw.blank_sound);
-        MediaPlayer bomb_sound = MediaPlayer.create(this, R.raw.bomb_sound);
+        MediaPlayer blank_sound = MediaPlayer.create(this, R.raw.blank_sound); // play sound for finding a mine
+        MediaPlayer bomb_sound = MediaPlayer.create(this, R.raw.bomb_sound); // play sound for clicking on a blank cell
 
         // use singleton to get the values stored in the singleton
         NUM_ROWS = singleton.getSavedBoardRow();
@@ -74,8 +73,8 @@ public class DynamicButtons extends AppCompatActivity {
         found.setText("Found " + FOUND_MINES + " of " + NUM_MINES + " mines.");
         TextView scanned = findViewById(R.id.scanUsed);
         scanned.setText("# Scans used: " + SCANS_USED);
-        TextView time = findViewById(R.id.timesPlayed);
-        //time.setText("Times Played: ");
+//        TextView time = findViewById(R.id.timesPlayed);
+//        time.setText("Times Played: ");
 
         mineSeeker.setBlank();
         mineSeeker.setMines();
@@ -97,7 +96,7 @@ public class DynamicButtons extends AppCompatActivity {
                         TableRow.LayoutParams.MATCH_PARENT,
                         TableRow.LayoutParams.MATCH_PARENT,
                         1.0f));
-                //button.setText("" + col + "," + row);
+
                 button.setPadding(0,0,0,0);
                 // make text not clip on small buttons
                 button.setOnClickListener(new View.OnClickListener() {
@@ -105,8 +104,6 @@ public class DynamicButtons extends AppCompatActivity {
                     public void onClick(View v) {
                         found.setText("Found " + FOUND_MINES + " of " + NUM_MINES + " mines.");
                         scanned.setText("# Scans used: " + SCANS_USED);
-
-                        //countMine = mineSeeker.countForAll(FINAL_ROW, FINAL_COL);
 
                         switch (mineSeeker.cellAt(FINAL_ROW, FINAL_COL).getValue()){
                             case Cell.BOMB:
@@ -186,6 +183,7 @@ public class DynamicButtons extends AppCompatActivity {
          //button.setText("" + col);
     }
 
+    // lock btn sizes
     private void lockButtonSizes() {
         for (int row = 0; row < NUM_ROWS; row++) {
             for (int col = 0; col < NUM_COLS; col++) {
@@ -204,6 +202,7 @@ public class DynamicButtons extends AppCompatActivity {
     }
 
 
+    // update countMines
     private void updateCount(int row, int col){
         countMine = mineSeeker.countForAll(row, col);
         mineSeeker.cellAt(row,col).setNumberOfHiddenMines(countMine);
@@ -211,7 +210,7 @@ public class DynamicButtons extends AppCompatActivity {
         button.setText(" " + countMine);
     }
 
-
+    // update countMines
     public void updateMineCount(int row, int column){
         int exposedMineCount = 0;
         int hiddenMines = 0;
