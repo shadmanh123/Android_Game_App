@@ -8,6 +8,7 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -62,6 +63,9 @@ public class DynamicButtons extends AppCompatActivity {
 
 
     private void populateButtons() {
+        MediaPlayer blank_sound = MediaPlayer.create(this, R.raw.blank_sound);
+        MediaPlayer bomb_sound = MediaPlayer.create(this, R.raw.bomb_sound);
+
         // use singleton to get the values stored in the singleton
         NUM_ROWS = singleton.getSavedBoardRow();
         NUM_COLS = singleton.getSavedBoardColumn();
@@ -102,25 +106,12 @@ public class DynamicButtons extends AppCompatActivity {
                         found.setText("Found " + FOUND_MINES + " of " + NUM_MINES + " mines.");
                         scanned.setText("# Scans used: " + SCANS_USED);
 
-//                        TextWatcher watcher = new TextWatcher() {
-//                            @Override
-//                            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-//                            @Override
-//                            public void afterTextChanged(Editable s) {}
-//                            @Override
-//                            public void onTextChanged(CharSequence s, int start, int before, int count) {
-//
-//                            }
-//                        };
-//
-//                        found.addTextChangedListener(watcher);
-//                        scanned.addTextChangedListener(watcher);
-
                         //countMine = mineSeeker.countForAll(FINAL_ROW, FINAL_COL);
 
                         switch (mineSeeker.cellAt(FINAL_ROW, FINAL_COL).getValue()){
                             case Cell.BOMB:
                                 if(!mineSeeker.cellAt(FINAL_ROW, FINAL_COL).isRevealed()){
+                                bomb_sound.start();
                                 gridButtonClicked(FINAL_ROW, FINAL_COL); // set bomb image
                                 FOUND_MINES++;
                                 //button.setText(" " + count);
@@ -136,10 +127,12 @@ public class DynamicButtons extends AppCompatActivity {
                             case Cell.BLANK:
                                 if(!mineSeeker.cellAt(FINAL_ROW, FINAL_COL).isScanned()){
                                     //button.setText(" " + countMine);
+                                    blank_sound.start();
                                     SCANS_USED++;
                                     mineSeeker.cellAt(FINAL_ROW, FINAL_COL).setScanned(true);
                                 }else {
                                     //button.setText(" " + countMine);
+                                    blank_sound.start();
                                 }
                                 break;
 
@@ -266,105 +259,6 @@ public class DynamicButtons extends AppCompatActivity {
 
         }
     }
-//    private TextWatcher textWatcher = new TextWatcher() {
-//        @Override
-//        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//
-//        }
-//
-//        @Override
-//        public void onTextChanged(CharSequence s, int start, int before, int count) {
-//
-//        }
-//
-//        @Override
-//        public void afterTextChanged(Editable s) {
-//
-//        }
-//
-//
-//    };
 
-
-    // 4 * 6
-    //      0   1   2   3   4   5   col
-
-    // 0    0   1   2   3   4   5
-    // 1    6   7   8   9   10  11
-    // 2    12  13  14  15  16  17
-    // 3    18  19  20  21  22  23
-    //row
-
-    // eg. 20 (row, col) = (3, 2)
-    // 20 = NUM_COLS * row + col
-    // 20 = 6 * 3 + 2
-    // make 20 the index of its cell stored in the List
-
-//    private void setBlank(){
-//        for (int row = 0; row < NUM_ROWS; row++) {
-//            for (int col = 0; col < NUM_COLS; col++) {
-//                cell.add(NUM_COLS * row + col, new Cell(Cell.BLANK, false, false));
-//            }
-//        }
-//    }
-//
-//    private void setMines(){
-//        int current_mines = 0;
-//        while(current_mines < NUM_MINES){
-//            int row = new Random().nextInt(NUM_ROWS);
-//            int col = new Random().nextInt(NUM_COLS);
-//            if(cellAt(row, col).getValue() == Cell.BLANK){
-//                cellAt(row, col).setValue(Cell.BOMB);
-//                current_mines++;
-//            }
-//        }
-//    }
-//
-//    public Cell cellAt(int row, int col) {
-//        if (row < 0 || row >= NUM_ROWS || col < 0 || col >= NUM_COLS) {
-//            return null;
-//        }
-//        return cell.get(NUM_COLS * row + col);
-//    }
-//
-//    private boolean isRevealed(int row, int col){
-//        return cellAt(row, col).isRevealed();
-//    }
-//
-//    private boolean isScanned(int row, int col){
-//        return cellAt(row, col).isScanned();
-//    }
-//
-//    private int countMines(int row, int col){
-//        int count = 0;
-//        for (int i = 0; i < NUM_ROWS; i++) {
-//            for (int j = 0; j < NUM_COLS; j++) {
-//                if(i == row || j == col) {
-//                    if (cellAt(i, j).getValue() == Cell.BOMB && !isRevealed(i, j)) {
-//                        count++;
-//                    }
-//                }
-//            }
-//        }
-//        return count;
-//    }
-//
-//    private int countForAll(int row, int col){
-//        int count = 0;
-//        for (int i = 0; i < NUM_ROWS; i++) {
-//            for (int j = 0; j < NUM_COLS; j++) {
-//                if(i == row || j == col) {
-//                    if (cellAt(i, j).getValue() == Cell.BOMB && !isRevealed(i, j)) {
-//                        count++;
-//                    }else if(cellAt(i, j).getValue() == Cell.BOMB && isRevealed(i, j)){
-//                        if(count > 0){
-//                            count--;
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//        return count;
-//    }
 
 }
