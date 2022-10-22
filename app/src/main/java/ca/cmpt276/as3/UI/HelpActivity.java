@@ -24,6 +24,7 @@ public class HelpActivity extends AppCompatActivity {
     }
 
     private void setupHyperlink() {
+        // set hyperlink
         TextView linkTextView = findViewById(R.id.help_text);
         linkTextView.setMovementMethod(LinkMovementMethod.getInstance());
     }

@@ -1,5 +1,6 @@
 package ca.cmpt276.as3.model;
 
+// set and get each cell(btn) value, which is if its bomb or blank, and number if HiddenMines on its row and col
 
 public class Cell {
     private int value;

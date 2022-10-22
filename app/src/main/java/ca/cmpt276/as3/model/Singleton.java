@@ -1,5 +1,6 @@
 package ca.cmpt276.as3.model;
 
+// store value from option activity - users choice
 public class Singleton {
 
     private static Singleton instance = null;

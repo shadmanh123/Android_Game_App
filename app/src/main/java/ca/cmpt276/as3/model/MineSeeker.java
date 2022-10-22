@@ -41,6 +41,7 @@ public class MineSeeker {
     // 20 = 6 * 3 + 2
     // make 20 the index of its cell stored in the List
 
+    // set all cells value blank
     public void setBlank(){
         for (int row = 0; row < NUM_ROWS; row++) {
             for (int col = 0; col < NUM_COLS; col++) {
@@ -49,6 +50,7 @@ public class MineSeeker {
         }
     }
 
+    // set random mines
     public void setMines(){
         int current_mines = 0;
         while(current_mines < NUM_MINES){
@@ -86,6 +88,7 @@ public class MineSeeker {
 //        }
 //    }
 
+    // get cell index
     public Cell cellAt(int row, int col) {
         if (row < 0 || row >= NUM_ROWS || col < 0 || col >= NUM_COLS) {
             return null;
@@ -93,7 +96,7 @@ public class MineSeeker {
         return cell.get(NUM_COLS * row + col);
     }
 
-
+    // count bombs on cells column and row
     public int countForAll(int row, int col){
         int count = 0;
         for (int i = 0; i < NUM_ROWS; i++) {
