@@ -1,4 +1,4 @@
-package ca.cmpt276.as3;
+package ca.cmpt276.as3.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,20 +9,13 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
+import ca.cmpt276.as3.R;
 import ca.cmpt276.as3.model.Cell;
 import ca.cmpt276.as3.model.MineSeeker;
 import ca.cmpt276.as3.model.Singleton;
