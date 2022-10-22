@@ -5,6 +5,7 @@ public class Cell {
     private int value;
     private boolean isRevealed;
     private boolean isScanned;
+    private int numberOfHiddenMines;
     public static final int BOMB = -1;
     public static final int BLANK = 0;
 
@@ -37,5 +38,13 @@ public class Cell {
 
     public void setScanned(boolean scanned) {
         isScanned = scanned;
+    }
+
+    public int getNumberOfHiddenMines() {
+        return numberOfHiddenMines;
+    }
+
+    public void setNumberOfHiddenMines(int numberOfHiddenMines) {
+        this.numberOfHiddenMines = numberOfHiddenMines;
     }
 }

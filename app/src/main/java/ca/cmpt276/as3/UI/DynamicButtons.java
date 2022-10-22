@@ -9,6 +9,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TableLayout;
@@ -21,7 +22,8 @@ import ca.cmpt276.as3.model.MineSeeker;
 import ca.cmpt276.as3.model.Singleton;
 
 public class DynamicButtons extends AppCompatActivity {
-
+    Handler handler;
+    Runnable runnable;
     private Singleton singleton = Singleton.getInstance();
     private MineSeeker mineSeeker= MineSeeker.getInstance();
     private int NUM_ROWS = 10;  // add values >= options values to fix java.lang.ArrayIndexOutOfBoundsException
@@ -146,6 +148,14 @@ public class DynamicButtons extends AppCompatActivity {
 
                         if(FOUND_MINES >= 0){
                             updateCount(FINAL_ROW, FINAL_COL);
+                            handler = new Handler();
+                            runnable = new Runnable() {
+                                @Override
+                                public void run() {
+                                    updateMineCount(FINAL_ROW,FINAL_COL);
+                                }
+                            };
+                            handler.postDelayed(runnable, 1000);
                         }
 
                     }
@@ -203,10 +213,53 @@ public class DynamicButtons extends AppCompatActivity {
 
     private void updateCount(int row, int col){
         countMine = mineSeeker.countForAll(row, col);
+        mineSeeker.cellAt(row,col).setNumberOfHiddenMines(countMine);
         Button button = buttons[row][col];
         button.setText(" " + countMine);
     }
 
+
+    public void updateMineCount(int row, int column){
+        int exposedMineCount = 0;
+        int hiddenMines = 0;
+        Button button;
+        countMine = mineSeeker.countForAll(row,column);
+        mineSeeker.cellAt(row,column).setNumberOfHiddenMines(countMine);
+        for (int rows = 0; rows < NUM_ROWS; rows++) {
+            if(mineSeeker.cellAt(rows,column).getValue() == Cell.BOMB && mineSeeker.cellAt(rows,
+                    column).isRevealed()){
+                exposedMineCount++;
+            }
+        }
+        for (int columns = 0; columns < NUM_COLS; columns++) {
+            if (mineSeeker.cellAt(row, columns).getValue() == Cell.BOMB && mineSeeker.cellAt(row,
+                    columns).isRevealed()) {
+                exposedMineCount++;
+            }
+        }
+        for(int rows = 0; rows < NUM_ROWS; rows++){
+            int oldNumberOfMines = mineSeeker.countForAll(row,column);
+            hiddenMines = oldNumberOfMines - exposedMineCount;
+            mineSeeker.cellAt(rows,column).setNumberOfHiddenMines(hiddenMines);
+
+            if(mineSeeker.cellAt(rows,column).isRevealed()){
+                button = buttons[rows][column];
+                button.setText(" " + hiddenMines);
+            }
+
+
+        }
+        for(int columns = 0; columns < NUM_ROWS; columns++){
+            int oldNumberOfMines = mineSeeker.countForAll(row,column);
+            hiddenMines = oldNumberOfMines - exposedMineCount;
+            mineSeeker.cellAt(row,columns).setNumberOfHiddenMines(hiddenMines);
+            if(mineSeeker.cellAt(row,columns).isRevealed()){
+                button = buttons[row][columns];
+                button.setText(" " + hiddenMines);
+            }
+
+        }
+    }
 //    private TextWatcher textWatcher = new TextWatcher() {
 //        @Override
 //        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
