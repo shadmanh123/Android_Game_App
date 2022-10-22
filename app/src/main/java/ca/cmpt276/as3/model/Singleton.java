@@ -1,6 +1,9 @@
 package ca.cmpt276.as3.model;
+/**
+ * Store value from option activity - users choices
+ * Implement methods to set and get selected mines, rows, and columns
+ */
 
-// store value from option activity - users choice
 public class Singleton {
 
     private static Singleton instance = null;
