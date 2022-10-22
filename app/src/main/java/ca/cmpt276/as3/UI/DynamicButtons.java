@@ -240,6 +240,9 @@ public class DynamicButtons extends AppCompatActivity {
         for(int rows = 0; rows < NUM_ROWS; rows++){
             int oldNumberOfMines = mineSeeker.countForAll(row,column);
             hiddenMines = oldNumberOfMines - exposedMineCount;
+            if(hiddenMines < 0){
+                hiddenMines = 0;
+            }
             mineSeeker.cellAt(rows,column).setNumberOfHiddenMines(hiddenMines);
 
             if(mineSeeker.cellAt(rows,column).isRevealed()){
@@ -252,6 +255,9 @@ public class DynamicButtons extends AppCompatActivity {
         for(int columns = 0; columns < NUM_ROWS; columns++){
             int oldNumberOfMines = mineSeeker.countForAll(row,column);
             hiddenMines = oldNumberOfMines - exposedMineCount;
+            if(hiddenMines < 0){
+                hiddenMines = 0;
+            }
             mineSeeker.cellAt(row,columns).setNumberOfHiddenMines(hiddenMines);
             if(mineSeeker.cellAt(row,columns).isRevealed()){
                 button = buttons[row][columns];
