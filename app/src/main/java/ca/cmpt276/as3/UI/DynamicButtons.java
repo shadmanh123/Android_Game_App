@@ -62,6 +62,9 @@ public class DynamicButtons extends AppCompatActivity {
 
     // populate buttons using table layout
     private void populateButtons() {
+        // sound effects from FreeSound under Sounds
+        // https://freesound.org/people/JarredGibb/sounds/219476/
+        // https://freesound.org/people/avreference/sounds/634784/
         MediaPlayer blank_sound = MediaPlayer.create(this, R.raw.blank_sound); // play sound for finding a mine
         MediaPlayer bomb_sound = MediaPlayer.create(this, R.raw.bomb_sound); // play sound for clicking on a blank cell
 
@@ -160,7 +163,6 @@ public class DynamicButtons extends AppCompatActivity {
     }
 
     private void gridButtonClicked(int row, int col) {
-        //Toast.makeText(this, "Button clicked: " + col + "," + row, Toast.LENGTH_SHORT).show();
         Button button = buttons[row][col];
         // set button color
         button.setTextColor(getResources().getColor(R.color.white));

@@ -34,8 +34,10 @@
         <a href="https://stackoverflow.com/questions/7965494/how-to-put-some-delay-in-calling-an-activity
         -from-another-activity">Stackoverflow - put delay   </a>
         <a href="https://stackoverflow.com/questions/38450220/how-to-show-two-splash-screen-one-by-one-with
-        -skip-button-in-android">Stackoverflow - show splash screen    </a>
+        -skip-button-in-android">Stackoverflow - show splash screen    \n</a>
         <a href="https://www.youtube.com/watch?v=0s6x3Sn4eYo">Slide Animation   </a>
+        <a href="https://freesound.org/people/JarredGibb/sounds/219476/">Button Sound 1      </a>
+        <a href="https://freesound.org/people/avreference/sounds/634784/">Button Sound 2</a>
     </string>
 
 </resources>
