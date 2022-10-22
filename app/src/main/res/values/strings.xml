@@ -3,10 +3,19 @@
     <string name="main_menu">Main Menu</string>
     <string name="option">Options</string>
     <string name="help">Help</string>
-    <string name="helpMessage">
+    <string name="dynamicBtn">Mine Seeker Game</string>
+    <string name="hello_world">Hello, welcome to mine seekers</string>
+    <string name="Welcome_Message">
+        Welcome to Treasure Finder!
+        This game is created by Jenna and Shadman. We hope you enjoy!
+        Click anywhere to continue.
+    </string>
+    <string name="hyperlink">
         \n
         The creators of this game are Jenna and Shadman. For more information about the authors,
-        check out this resource: https://opencoursehub.cs.sfu.ca/bfraser/grav-cms/cmpt276/home\n
+        check out this resource:
+        <a href="https://opencoursehub.cs.sfu.ca/bfraser/grav-cms/cmpt276/home">CMPT276</a>
+        \n
         \n
         You are a captain leading a group of pirates to find the hidden treasures on the island.
         When you tap "Play Game" button, you will be introduced to a grid. Each cell in the grid
@@ -19,21 +28,14 @@
         the treasure quickly before other pirates discover the hidden treasures!\n
         \n
         We have used resources from the following sources to make this game: \n
-        https://wallpaperaccess.com/pirate-ship\n
-        https://www.shareicon.net/treasure-gold-34307\n
-        https://www.youtube.com/watch?v=XwWZlDKXACs\n
-        https://stackoverflow.com/questions/7965494/how-to-put-some-delay-in-calling-an-activity
-        -from-another-activity\n
-        https://stackoverflow.com/questions/38450220/how-to-show-two-splash-screen-one-by-one-with
-        -skip-button-in-android\n
-        https://www.youtube.com/watch?v=0s6x3Sn4eYo\n
+        <a href="https://wallpaperaccess.com/pirate-ship">Pirate Ship Wallpapers   </a>
+        <a href="https://www.shareicon.net/treasure-gold-34307">Treasure Gold    </a>
+        <a href="https://www.youtube.com/watch?v=XwWZlDKXACs">Animated Custom Dialog    \n</a>
+        <a href="https://stackoverflow.com/questions/7965494/how-to-put-some-delay-in-calling-an-activity
+        -from-another-activity">Stackoverflow - put delay   </a>
+        <a href="https://stackoverflow.com/questions/38450220/how-to-show-two-splash-screen-one-by-one-with
+        -skip-button-in-android">Stackoverflow - show splash screen    </a>
+        <a href="https://www.youtube.com/watch?v=0s6x3Sn4eYo">Slide Animation   </a>
+    </string>
 
-    </string>
-    <string name="dynamicBtn">Mine Seeker Game</string>
-    <string name="hello_world">Hello, welcome to mine seekers</string>
-    <string name="Welcome_Message">
-        Welcome to Treasure Finder!
-        This game is created by Jenna and Shadman. We hope you enjoy!
-        Click anywhere to continue.
-    </string>
 </resources>
