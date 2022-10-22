@@ -3,6 +3,10 @@ package ca.cmpt276.as3.model;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+/**
+ * Implement an ArrayList to store cells with their values
+ * Implement methods to get cells index, set Mines, and count mines
+ */
 
 public class MineSeeker {
     private Singleton singleton = Singleton.getInstance();
