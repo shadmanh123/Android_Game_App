@@ -7,12 +7,12 @@
     <string name="hello_world">Hello, welcome to mine seekers</string>
     <string name="Welcome_Message">
         Welcome to Treasure Finder!
-        This game is created by Jenna and Shadman. We hope you enjoy!
+        This game is created by Meiqi and Shadman. We hope you enjoy!
         Click anywhere to continue.
     </string>
     <string name="hyperlink">
         \n
-        The creators of this game are Jenna and Shadman. For more information about the authors,
+        The creators of this game are Meiqi and Shadman. For more information about the authors,
         check out this resource:
         <a href="https://opencoursehub.cs.sfu.ca/bfraser/grav-cms/cmpt276/home">CMPT276</a>
         \n
