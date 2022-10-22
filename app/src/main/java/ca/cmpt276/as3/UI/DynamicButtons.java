@@ -22,7 +22,10 @@ import ca.cmpt276.as3.R;
 import ca.cmpt276.as3.model.Cell;
 import ca.cmpt276.as3.model.MineSeeker;
 import ca.cmpt276.as3.model.Singleton;
-
+/**
+ * Creates the grid with which the player interacts to find the treasure.
+ * Also provides the congratulating message when the player wins.
+ */
 public class DynamicButtons extends AppCompatActivity {
     Dialog dialog;
     Handler handler;
